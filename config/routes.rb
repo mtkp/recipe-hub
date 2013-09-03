@@ -1,7 +1,16 @@
 Recipehub::Application.routes.draw do
 
+  resources :recipes
+
+  get 'users/show'
+
   devise_for :users
-  root 'user#new'
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new'
+    get 'sign_out', :to => 'devise/sessions#destroy'
+  end
+
+  root 'users#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
