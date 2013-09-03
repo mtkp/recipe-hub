@@ -1,0 +1,5 @@
+<li>
+  <%= instruction.body %>
+  <%= link_to 'Edit', edit_recipe_instruction_path(@recipe, instruction) %>
+  <%= link_to 'Delete', recipe_instruction_path(@recipe, instruction), method: :delete, data: { confirm: 'Are you sure?' } %>
+</li>

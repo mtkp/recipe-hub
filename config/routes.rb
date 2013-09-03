@@ -2,6 +2,7 @@ Recipehub::Application.routes.draw do
 
   resources :recipes do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
+    resources :instructions, only: [:new, :edit, :update, :create, :destroy]
   end
 
   get 'users/show'

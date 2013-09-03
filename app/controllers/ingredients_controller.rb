@@ -58,7 +58,7 @@ class IngredientsController < ApplicationController
       @ingredient = @recipe.ingredients.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access non-existant or unauthorized ingredient"
-      redirect_to users_show_path, alert: "Ingredient was not found."
+      redirect_to @recipe, alert: "Ingredient was not found."
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

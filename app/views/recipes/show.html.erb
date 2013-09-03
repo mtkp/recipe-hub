@@ -15,6 +15,15 @@
   </ul>
 </p>
 
+<p>
+  <strong>Instructions:</strong>
+  <ol>
+    <%= render @recipe.instructions %>
+  </ol>
+</p>
+
+
 <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
+<%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
 <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
