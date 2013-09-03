@@ -1,6 +1,8 @@
 Recipehub::Application.routes.draw do
 
-  resources :recipes
+  resources :recipes do
+    resources :ingredients
+  end
 
   get 'users/show'
 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  food: MyString
+  magnitude: 1
+  units: MyString
+  recipe_id: 
+
+two:
+  food: MyString
+  magnitude: 1
+  units: MyString
+  recipe_id: 

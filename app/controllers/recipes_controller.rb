@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
+  include CurrentRecipe
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :recipe_not_found
 
   # GET /recipes
   # GET /recipes.json
@@ -63,18 +63,9 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = current_user.recipes.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:title, :notes)
     end
 
-    def recipe_not_found
-      logger.error "Attempt to access non-existant or unauthorized recipe"
-      redirect_to users_show_path, notice: "Recipe was not found."
-    end
 end
