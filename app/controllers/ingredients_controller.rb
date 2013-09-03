@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   include CurrentRecipe
   before_action :set_recipe
-  before_action :set_ingredient, except: [:new]
+  before_action :set_ingredient, except: [:new, :create]
 
   # GET /ingredients/new
   def new
@@ -47,7 +47,7 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient.destroy
     respond_to do |format|
-      format.html { redirect_to ingredients_url }
+      format.html { redirect_to @recipe }
       format.json { head :no_content }
     end
   end
