@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  recipe_id: 
-  user_id: 
+  recipe: tacos
+  user: one
 
 two:
-  recipe_id: 
-  user_id: 
+  recipe: tacos
+  user: two

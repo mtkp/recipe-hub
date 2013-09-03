@@ -1,15 +1,17 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:edit, :update, :destroy]
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = current_user.recipes
+    @user = User.find(params[:user_id])
+    @recipes = @user.recipes
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   # GET /recipes/new
@@ -67,7 +69,7 @@ class RecipesController < ApplicationController
       @recipe = current_user.recipes.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access non-existant or unauthorized recipe"
-      redirect_to users_show_path, alert: "Recipe was not found."
+      redirect_to user_path(current_user), alert: "Recipe was not found."
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

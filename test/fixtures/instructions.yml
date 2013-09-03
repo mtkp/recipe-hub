@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  recipe_id: 
+  recipe: tacos
   position: 1
 
 two:
   body: MyText
-  recipe_id: 
-  position: 1
+  recipe: tacos
+  position: 2

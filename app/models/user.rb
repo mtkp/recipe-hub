@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
 
   has_many :recipes, dependent: :destroy
   has_many :stars, dependent: :destroy
-  has_many :recipes, through: :stars
 end

@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div id="current_user">
-    <p>Currently signed in as <%= current_user.email %></p>
+    <p>Currently signed in as <%= link_to current_user.email, current_user %></p>
     <p>Would you like to <%= link_to 'sign out?', sign_out_path %></p>
   </div>
 <% end %>

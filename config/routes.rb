@@ -1,11 +1,14 @@
 Recipehub::Application.routes.draw do
 
-  resources :recipes do
+  resources :recipes, except: [:index] do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
     resources :instructions, only: [:new, :edit, :update, :create, :destroy]
+    resources :stars, only: [:create, :destroy, :index]
   end
 
-  get 'users/show'
+  resources :users, only: [:show] do
+    resources :recipes, only: [:index]
+  end
 
   devise_for :users
   devise_scope :user do

@@ -1,3 +1,8 @@
-<h2>Welcome. This is your profile page.</h2>
-<p><%= @user.email %></p>
-<p><%= link_to "View recipes", recipes_path %></p>
+<% if current_user == @user %>
+  <h2>Welcome. This is your profile page.</h2>  
+  <p><%= @user.email %></p>
+  <p><%= link_to "View your recipes", user_recipes_path(@user) %></p>
+<% else %>
+  <p>You are viewing the profile page for <%= @user.email %></p>
+  <p><%= link_to "View #{@user.email}'s recipes", user_recipes_path(@user) %></p>
+<% end %>
