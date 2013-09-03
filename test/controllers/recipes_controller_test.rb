@@ -3,13 +3,19 @@ require 'test_helper'
 class RecipesControllerTest < ActionController::TestCase
   setup do
     @recipe = recipes(:tacos)
-    sign_in users(:one)
+    @user = users(:one)
+    sign_in :user, @user
+  end
+
+  teardown do
+    sign_out :user
   end
 
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:recipes)
+    assert_select 'tbody tr', 2
   end
 
   test "should get new" do

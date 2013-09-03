@@ -3,9 +3,9 @@
 tacos:
   title: Tacos
   notes: MyText
-  user_id: one
+  user: one
 
 pasta:
   title: Pasta
   notes: MyText
-  user_id: one
+  user: one
