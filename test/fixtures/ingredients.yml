@@ -4,10 +4,10 @@ one:
   food: MyString
   magnitude: 1
   units: MyString
-  recipe_id: 
+  recipe_id: tacos
 
 two:
   food: MyString
   magnitude: 1
   units: MyString
-  recipe_id: 
+  recipe_id: pasta

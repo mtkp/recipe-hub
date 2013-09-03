@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  include CurrentRecipe
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
@@ -63,6 +62,14 @@ class RecipesController < ApplicationController
   end
 
   private
+
+    def set_recipe
+      @recipe = current_user.recipes.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access non-existant or unauthorized recipe"
+      redirect_to users_show_path, alert: "Recipe was not found."
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:title, :notes)

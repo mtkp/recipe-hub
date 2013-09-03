@@ -1,18 +1,7 @@
 class IngredientsController < ApplicationController
   include CurrentRecipe
   before_action :set_recipe
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
-
-  # GET /ingredients
-  # GET /ingredients.json
-  def index
-    @ingredients = @recipe.ingredients
-  end
-
-  # GET /ingredients/1
-  # GET /ingredients/1.json
-  def show
-  end
+  before_action :set_ingredient, except: [:new]
 
   # GET /ingredients/new
   def new

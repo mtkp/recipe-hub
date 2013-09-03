@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
+tacos:
+  title: Tacos
   notes: MyText
+  user_id: one
 
-two:
-  title: MyString
+pasta:
+  title: Pasta
   notes: MyText
+  user_id: one

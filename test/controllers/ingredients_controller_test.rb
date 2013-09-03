@@ -21,7 +21,7 @@ class IngredientsControllerTest < ActionController::TestCase
       post :create, ingredient: { food: @ingredient.food, magnitude: @ingredient.magnitude, recipe_id: @ingredient.recipe_id, units: @ingredient.units }
     end
 
-    assert_redirected_to ingredient_path(assigns(:ingredient))
+    assert_redirected_to recipe_path(@ingredient.recipe_id)
   end
 
   test "should show ingredient" do

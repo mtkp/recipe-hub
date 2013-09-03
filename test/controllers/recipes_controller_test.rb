@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RecipesControllerTest < ActionController::TestCase
   setup do
-    @recipe = recipes(:one)
+    @recipe = recipes(:tacos)
+    sign_in users(:one)
   end
 
   test "should get index" do
