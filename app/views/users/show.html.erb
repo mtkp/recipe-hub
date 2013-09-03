@@ -1,2 +1,4 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>Welcome. This is your profile page.</h2>
+<p><%= @user.email %></p>
+<p><%= @user.sign_in_count %></p>
+<p><%= link_to "View recipes", recipes_path %></p>

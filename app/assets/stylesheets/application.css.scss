@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+#current_user {
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: -8px;
+  padding: 10px;
+  background: #ddd;
+  p {
+    font-size: smaller;
+    display: inline;
+    padding-right: 15px;
+  }
+}
