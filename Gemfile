@@ -18,6 +18,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use Devise for user authentication
 gem 'devise'
 
+# Use Bootstrap 3 for visual styling
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
