@@ -3,7 +3,8 @@ Recipehub::Application.routes.draw do
   resources :recipes, except: [:index] do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
     resources :instructions, only: [:new, :edit, :update, :create, :destroy]
-    resources :stars, only: [:create, :destroy, :index]
+    resources :stars, only: [:create, :index]
+    delete 'stars', to: 'stars#destroy'
   end
 
   resources :users, only: [:show] do
@@ -12,8 +13,8 @@ Recipehub::Application.routes.draw do
 
   devise_for :users
   devise_scope :user do
-    get 'sign_in', :to => 'devise/sessions#new'
-    get 'sign_out', :to => 'devise/sessions#destroy'
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_out', to: 'devise/sessions#destroy'
   end
 
   root 'users#show'

@@ -20,7 +20,7 @@ class StarsControllerTest < ActionController::TestCase
 
   test "should get destroy" do
     assert_difference('Star.count', -1) do
-      delete :destroy, id: @star, recipe_id: @recipe
+      delete :destroy, recipe_id: @recipe
     end
 
     assert_redirected_to @recipe

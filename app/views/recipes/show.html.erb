@@ -1,35 +1,41 @@
-<p>
-  <strong>Title:</strong>
-  <%= @recipe.title %>
-</p>
+<div id="recipe">
+  <div id="title">
+    <strong>Title:</strong>
+    <%= @recipe.title %>
+  </div>
 
-<p>
-  <strong>Stars:</strong>
-  <%= link_to @recipe.stars.count, recipe_stars_path(@recipe) %>
-</p>
+  <div id="stars">
+    <strong>Stars:</strong>
+    <%= link_to @recipe.stars.count, recipe_stars_path(@recipe) %>.
+    <% if current_user.has_starred?(@recipe) %>
+      You have starred this recipe.
+      <%= link_to "Unstar it", recipe_stars_path(@recipe), method: :delete %>?
+    <% else %>
+      <%= link_to "Star this recipe", recipe_stars_path(@recipe), method: :post %>!
+    <% end %>
+  </div>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @recipe.notes %>
-</p>
+  <div id="notes">
+    <strong>Notes:</strong>
+    <%= @recipe.notes %>
+  </div>
 
-<p>
-  <strong>Ingredients:</strong>
-  <ul>
-    <%= render @recipe.ingredients %>
-  </ul>
-</p>
+  <div id="ingredients">
+    <strong>Ingredients:</strong>
+    <ul>
+      <%= render @recipe.ingredients %>
+    </ul>
+  </div>
 
-<p>
-  <strong>Instructions:</strong>
-  <ol>
+  <div id="instructions">
+    <strong>Instructions:</strong>
     <%= render @recipe.instructions %>
-  </ol>
-</p>
+  </div>
 
-<% if @recipe.user == current_user %>
-  <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
-  <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
-  <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
-<% end %>
-<%= link_to 'Back', user_recipes_path(@recipe.user) %>
+  <% if @recipe.user == current_user %>
+    <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
+    <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
+    <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
+  <% end %>
+  <%= link_to 'Back', user_recipes_path(@recipe.user) %>
+</div>

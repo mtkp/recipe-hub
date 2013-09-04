@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :recipes, dependent: :destroy
   has_many :stars, dependent: :destroy
+
+  def has_starred?(recipe)
+    stars.find_by(recipe_id: recipe.id)
+  end
 end
