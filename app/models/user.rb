@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   has_many :stars, dependent: :destroy
 
   # username hooks
-  VALID_USERNAME_REGEX = /\A[\w]+\z/i
+  VALID_USERNAME_REGEX = /\A[\w]*[a-z]+[\w]*\z/i
   validates :username, presence: true,
-                       length: { maximum: 20 },
+                       length: { minimum: 3, maximum: 20 },
                        uniqueness: { case_sensitive: false },
                        format: { with: VALID_USERNAME_REGEX }
   before_save { username.downcase! }
