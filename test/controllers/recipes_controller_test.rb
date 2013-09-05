@@ -51,6 +51,6 @@ class RecipesControllerTest < ActionController::TestCase
       delete :destroy, id: @recipe
     end
 
-    assert_redirected_to recipes_path
+    assert_redirected_to user_recipes_path(@user)
   end
 end

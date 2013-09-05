@@ -59,8 +59,18 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url }
+      format.html { redirect_to user_recipes_url(@recipe.user) }
       format.json { head :no_content }
+    end
+  end
+
+  def fork
+    source_recipe = Recipe.find(params[:id])
+    @recipe = source_recipe.fork_for current_user
+    if @recipe
+      redirect_to @recipe and return
+    else
+      redirect_to source_recipe
     end
   end
 

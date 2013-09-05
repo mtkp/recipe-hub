@@ -1,4 +1,4 @@
-<h1>Recipes index</h1>
+<h2>Recipes index for <%= @user.username %></h2>
 
 <% if @recipes.any? %>
   <table class="table">
@@ -32,4 +32,4 @@
 <% if @user == current_user %>
   <%= link_to 'New Recipe', new_recipe_path %> |
 <% end %>
-<%= link_to 'Back', @user %>
+<%= link_to "Back to profile for #{@user.username}", @user %>

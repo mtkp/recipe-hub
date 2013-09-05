@@ -5,6 +5,9 @@ Recipehub::Application.routes.draw do
     resources :instructions, only: [:new, :edit, :update, :create, :destroy]
     resources :stars, only: [:create, :index]
     delete 'stars', :to => 'stars#destroy'
+    member do
+      post :fork
+    end
   end
 
   devise_for :users

@@ -15,6 +15,22 @@ class Recipe < ActiveRecord::Base
   has_one  :source, foreign_key: "fork_id", class_name: "Fork",
                     dependent: :destroy
   has_one  :source_recipe, through: :source, source: :source
+  delegate :user, to: :source_recipe, prefix: true
 
   validates :title, :user_id, presence: true
+
+  def fork_for(user)
+    recipe_fork = Recipe.create(
+      title: title,
+      notes: notes,
+      user_id: user.id
+    )
+
+    ingredients.each { |i| i.fork_for(recipe_fork) }
+    instructions.each { |i| i.fork_for(recipe_fork) }
+
+    Fork.create(source_id: id, fork_id: recipe_fork.id)
+    recipe_fork
+  end
+
 end
