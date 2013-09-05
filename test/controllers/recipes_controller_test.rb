@@ -15,7 +15,7 @@ class RecipesControllerTest < ActionController::TestCase
     get :index, user_id: @user
     assert_response :success
     assert_not_nil assigns(:recipes)
-    assert_select 'tbody tr', 2
+    assert_select 'tbody tr', 4
   end
 
   test "should get new" do
