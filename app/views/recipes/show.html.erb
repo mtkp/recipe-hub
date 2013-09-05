@@ -10,9 +10,18 @@
   </div>
 
   <% if @recipe.source %>
-    <strong>Forked from:</strong>
-    <%= link_to @recipe.source_recipe.title, @recipe.source_recipe %> by
-    <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
+    <div id="source">
+      <strong>Forked from:</strong>
+      <%= link_to @recipe.source_recipe.title, @recipe.source_recipe %> by
+      <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
+    </div>
+  <% end %>
+
+  <% if @recipe.forks %>
+    <div id="forks">
+      <strong>Forks:</strong>
+      <%= link_to @recipe.forks.count, recipe_forks_path(@recipe) %>.
+    </div>
   <% end %>
 
   <div id="stars">

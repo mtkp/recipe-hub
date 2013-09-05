@@ -1,0 +1,8 @@
+<h3>Forks of <%= @recipe.title %></h3>
+<% @recipe.forked_recipes.each do |recipe_fork| %>
+  <p>
+    Forked as <%= link_to recipe_fork.title, recipe_fork %>,
+    by <%= link_to recipe_fork.user.username, user_path(recipe_fork.user) %>
+  </p>
+<% end %>
+<%= link_to 'Back', @recipe %>

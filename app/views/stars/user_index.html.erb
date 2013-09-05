@@ -1,4 +1,4 @@
-<h2>Stars for <%= @user.username %></h2>
+<h3>Stars for <%= @user.username %></h3>
 <% @user.stars.each do |star| %>
   <p>Starred <%= link_to star.recipe.title, recipe_path(star.recipe) %></p>
 <% end %>
