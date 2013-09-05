@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
     source_recipe = Recipe.find(params[:id])
     @recipe = source_recipe.fork_for current_user
     if @recipe
-      redirect_to @recipe and return
+      redirect_to @recipe, notice: "#{source_recipe.title} forked!"
     else
       redirect_to source_recipe
     end

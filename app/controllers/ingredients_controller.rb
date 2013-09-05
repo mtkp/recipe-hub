@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   include CurrentRecipe
-  before_action :set_recipe
+  before_action :set_editable_recipe
   before_action :set_ingredient, except: [:new, :create]
 
   # GET /ingredients/new

@@ -1,5 +1,6 @@
 class StarsController < ApplicationController
-  before_action :set_recipe, except: [:index]
+  include CurrentRecipe
+  before_action :set_viewable_recipe, except: [:index]
 
   # POST /instructions
   def create
@@ -23,10 +24,5 @@ class StarsController < ApplicationController
       render 'user_index'
     end
   end
-
-  private
-    def set_recipe
-      @recipe = Recipe.find(params[:recipe_id])
-    end
 
 end

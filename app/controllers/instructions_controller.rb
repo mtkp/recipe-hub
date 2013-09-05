@@ -1,6 +1,6 @@
 class InstructionsController < ApplicationController
   include CurrentRecipe
-  before_action :set_recipe
+  before_action :set_editable_recipe
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
 
   # GET /instructions/new
