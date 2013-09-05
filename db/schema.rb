@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905055810) do
+ActiveRecord::Schema.define(version: 20130905184046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "forks", force: true do |t|
+    t.integer  "source_id"
+    t.integer  "fork_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forks", ["fork_id"], name: "index_forks_on_fork_id", using: :btree
+  add_index "forks", ["source_id", "fork_id"], name: "index_forks_on_source_id_and_fork_id", unique: true, using: :btree
+  add_index "forks", ["source_id"], name: "index_forks_on_source_id", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.string   "food"
