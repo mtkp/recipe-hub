@@ -4,21 +4,22 @@ Recipehub::Application.routes.draw do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
     resources :instructions, only: [:new, :edit, :update, :create, :destroy]
     resources :stars, only: [:create, :index]
-    delete 'stars', to: 'stars#destroy'
+    delete 'stars', :to => 'stars#destroy'
   end
 
+  devise_for :users
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new'
+    get 'sign_out', :to => 'devise/sessions#destroy'
+    get 'sign_up', :to => 'devise/registrations#new'
+  end
+  
   resources :users, only: [:show] do
     resources :recipes, only: [:index]
     resources :stars, only: [:index]
   end
 
-  devise_for :users
-  devise_scope :user do
-    get 'sign_in', to: 'devise/sessions#new'
-    get 'sign_out', to: 'devise/sessions#destroy'
-  end
-
-  root 'users#show'
+  root 'static_pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

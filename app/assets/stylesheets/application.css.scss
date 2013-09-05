@@ -9,13 +9,49 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require twitter/bootstrap
  *= require_tree .
  */
+
+// change navbar before import
+$navbar-default-bg: #008732;
+$navbar-default-color: #eee;
+$navbar-default-link-color: #fff;
+$navbar-link-color: $navbar-default-color;
+$navbar-default-brand-color: $navbar-default-color;
+$navbar-default-link-hover-color: #fff;
+$navbar-default-brand-hover-color: $navbar-default-link-hover-color;
+$navbar-height: 45px;
+
+// change font before import
+$font-family-base: Arial;
+
+// change btn-success before import
+$btn-success-bg: $navbar-default-bg;
 
  // import original bootstrap
 @import "twitter/bootstrap";
 
-.navbar {
-  background: purple;
+
+body {
+  padding-top: 60px;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.navbar-brand {
+  font-size: 22px;
+}
+
+.devise-form {
+  .btn {
+    margin-bottom: 10px;
+  }
+  .devise-links {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
 }
