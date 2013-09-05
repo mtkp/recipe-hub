@@ -4,8 +4,9 @@
   <p>Your email: <%= @user.email %></p>
   <p><%= link_to "View your recipes", user_recipes_path(@user) %></p>
   <p><%= link_to "View your stars", user_stars_path(@user) %></p>
+  <p><%= link_to "Edit your account", edit_user_registration_path %></p>
 <% else %>
   <h3>You are viewing the profile page for <%= @user.username %></h3>
-  <p><%= link_to "View #{@user.email}'s recipes", user_recipes_path(@user) %></p>
-  <p><%= link_to "View #{@user.email}'s stars", user_stars_path(@user) %></p>
+  <p><%= link_to "View #{@user.username}'s recipes", user_recipes_path(@user) %></p>
+  <p><%= link_to "View #{@user.username}'s stars", user_stars_path(@user) %></p>
 <% end %>

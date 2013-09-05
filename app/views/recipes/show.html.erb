@@ -37,6 +37,7 @@
     <%= render @recipe.instructions %>
   </div>
 
+  <br />
   <% if @author == current_user %>
     <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
     <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
