@@ -1,20 +1,15 @@
 class StarsController < ApplicationController
+  before_action :set_recipe, except: [:index]
 
   # POST /instructions
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @star = current_user.stars.build(recipe_id: @recipe.id)
-    if @star.save
-      redirect_to @recipe, notice: 'Recipe starred!'
-    else
-      redirect_to @recipe, notice: 'There was an error when starring this recipe...'
-    end
+    @star = Star.find_or_create_by(recipe_id: @recipe.id, user_id: current_user.id)
+    redirect_to @recipe, notice: 'Recipe starred!'
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
     @star = current_user.stars.find_by(recipe_id: @recipe.id)
-    @star.destroy
+    @star.destroy if @star
     redirect_to @recipe, notice: 'Star removed.'
   end
 
@@ -28,5 +23,10 @@ class StarsController < ApplicationController
       render 'user_index'
     end
   end
+
+  private
+    def set_recipe
+      @recipe = Recipe.find(params[:recipe_id])
+    end
 
 end
