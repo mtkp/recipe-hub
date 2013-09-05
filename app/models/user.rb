@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   has_many :recipes, dependent: :destroy
   has_many :stars, dependent: :destroy
 
+  # username hooks
+  VALID_USERNAME_REGEX = /\A[\w]+\z/i
+  validates :username, presence: true,
+                       length: { maximum: 20 },
+                       uniqueness: { case_sensitive: false },
+                       format: { with: VALID_USERNAME_REGEX }
+  before_save { username.downcase! }
+
   def has_starred?(recipe)
     stars.find_by(recipe_id: recipe.id)
   end
