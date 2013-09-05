@@ -4,6 +4,11 @@
     <%= @recipe.title %>
   </div>
 
+  <div id="author">
+    <strong>Author:</strong>
+    <%= link_to @author.username, @author %>
+  </div>
+
   <div id="stars">
     <strong>Stars:</strong>
     <%= link_to @recipe.stars.count, recipe_stars_path(@recipe) %>.
@@ -32,10 +37,10 @@
     <%= render @recipe.instructions %>
   </div>
 
-  <% if @recipe.user == current_user %>
+  <% if @author == current_user %>
     <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
     <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
     <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
   <% end %>
-  <%= link_to 'Back', user_recipes_path(@recipe.user) %>
+  <%= link_to 'Back', user_recipes_path(@author) %>
 </div>

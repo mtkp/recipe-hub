@@ -1,10 +1,11 @@
 <% if current_user == @user %>
-  <h2>Welcome. This is your profile page.</h2>  
-  <p><%= @user.email %></p>
+  <h3>Welcome. This is your profile page.</h3>
+  <p>Your username: <%= @user.username %></p>
+  <p>Your email: <%= @user.email %></p>
   <p><%= link_to "View your recipes", user_recipes_path(@user) %></p>
   <p><%= link_to "View your stars", user_stars_path(@user) %></p>
 <% else %>
-  <p>You are viewing the profile page for <%= @user.email %></p>
+  <h3>You are viewing the profile page for <%= @user.username %></h3>
   <p><%= link_to "View #{@user.email}'s recipes", user_recipes_path(@user) %></p>
   <p><%= link_to "View #{@user.email}'s stars", user_stars_path(@user) %></p>
 <% end %>
