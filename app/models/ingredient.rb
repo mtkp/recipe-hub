@@ -3,6 +3,7 @@ class Ingredient < ActiveRecord::Base
 
   validates :food, :recipe_id, presence: true
   after_save :touch_recipe!
+  after_destroy :touch_recipe!
 
   def fork_for(recipe)
     Ingredient.create(
