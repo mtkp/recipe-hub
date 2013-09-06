@@ -1,0 +1,5 @@
+<div>
+  <%= link_to truncate(recipe.title, length: 80), recipe %>
+  <small>Updated on <%= recipe.updated_at.strftime('%m/%d/%y') %></small>
+</div>
+<div>Notes: <%= truncate(recipe.notes, length: 80) %></div>

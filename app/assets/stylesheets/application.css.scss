@@ -22,9 +22,6 @@ $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: $navbar-default-link-hover-color;
 $navbar-height: 45px;
 
-// change font before import
-$font-family-base: Arial;
-
 // change btn-success before import
 $btn-success-bg: $navbar-default-bg;
 
@@ -40,6 +37,10 @@ footer {
   margin-top: 60px;
   padding: 20px;
   border-top: 1px solid #eee;
+}
+
+.pad-top {
+  margin-top: 20px;
 }
 
 .navbar-brand {
