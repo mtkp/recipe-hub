@@ -1,3 +1,26 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#recipe {
+
+  #header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    #title h3 {
+      margin-bottom: 0px;
+      margin-top: 10px;
+    }
+
+    #forks, #stars {
+      width: 50%;
+      margin-top: 10px;
+      padding-bottom: 5px;
+      strong, div {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}

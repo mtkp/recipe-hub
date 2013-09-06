@@ -1,40 +1,28 @@
-<div id="recipe">
-  <div id="title">
-    <strong>Title:</strong>
-    <%= @recipe.title %>
-  </div>
+<div id="recipe" class="col-xs-12">
 
-  <div id="author">
-    <strong>Author:</strong>
-    <%= link_to @author.username, @author %>
-  </div>
-
-  <% if @recipe.source %>
-    <div id="source">
-      <strong>Forked from:</strong>
-      <%= link_to @recipe.source_recipe.title, @recipe.source_recipe %> by
-      <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
+  <div id="header" class="row">
+    <div id="title" class="col-md-9">
+      <h3><%= link_to @recipe.title, @recipe %> by <%= link_to @author.username, @author %></h3>
+      <% if @recipe.source %>
+        <div id="source">
+          <strong>Forked from:</strong>
+          <%= link_to @recipe.source_recipe.title, @recipe.source_recipe %>
+          by
+          <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 
-  <% if @recipe.forks %>
-    <div id="forks">
-      <strong>Forks:</strong>
-      <%= link_to @recipe.forks.count, recipe_forks_path(@recipe) %>.
+    <div class="col-xs-12 col-md-3">
+      <div id="forks" class="pull-right">
+        <%= render 'forks', recipe: @recipe %>
+      </div>
+
+      <div id="stars" class="pull-left"> 
+        <%= render 'stars', recipe: @recipe %>
+      </div>
     </div>
-  <% end %>
-
-  <div id="stars">
-    <strong>Stars:</strong>
-    <%= link_to @recipe.stars.count, recipe_stars_path(@recipe) %>.
-    <% if current_user.has_starred?(@recipe) %>
-      You have starred this recipe.
-      <%= link_to "Unstar it", recipe_stars_path(@recipe), method: :delete %>?
-    <% else %>
-      <%= link_to "Star this recipe", recipe_stars_path(@recipe), method: :post %>!
-    <% end %>
   </div>
-
   <div id="notes">
     <strong>Notes:</strong>
     <%= @recipe.notes %>
@@ -57,8 +45,6 @@
     <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
     <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
     <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
-  <% else %>
-    <%= link_to 'Fork this recipe', fork_recipe_path(@recipe), method: :post %> |
   <% end %>
   <%= link_to 'Back to recipes index', user_recipes_path(@author) %>
 </div>

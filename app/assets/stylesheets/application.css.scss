@@ -22,8 +22,10 @@ $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: $navbar-default-link-hover-color;
 $navbar-height: 45px;
 
-// change btn-success before import
+
+// change page elements before import
 $btn-success-bg: $navbar-default-bg;
+$link-color: lighten($navbar-default-bg, 5%);
 
  // import original bootstrap
 @import "twitter/bootstrap";
@@ -39,14 +41,12 @@ footer {
   border-top: 1px solid #eee;
 }
 
-.pad-top {
-  margin-top: 20px;
-}
-
 .navbar-brand {
   font-size: 22px;
 }
 
+
+// styling for devise forms
 .devise-form {
   .btn {
     margin-bottom: 20px;
@@ -57,6 +57,8 @@ footer {
   }
 }
 
+
+// styling for devise partial (ex. recent recipes on user profiles)
 .recipe-partial small {
   margin-left: 2px;
   color: #888;

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
             else
               current_user
             end
-    @recent_recipes = @user.recipes.order('updated_at desc').first(5)
+    @recent_recipes = @user.recipes.order('updated_at desc').first(10)
   end
 
 end
