@@ -14,9 +14,8 @@
 
 // change navbar before import
 $navbar-default-bg: #008732;
-$navbar-default-color: darken(adjust_hue($navbar-default-bg, -13), 13%);
+$navbar-default-color: darken(adjust_hue($navbar-default-bg, -10), 10%);
 $navbar-default-link-color: white;
-$navbar-link-color: $navbar-default-color;
 $navbar-default-brand-color: #fff;
 $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: $navbar-default-link-hover-color;
@@ -37,9 +36,13 @@ body {
 }
 
 footer {
-  margin-top: 60px;
+  margin-top: 40px;
   padding: 20px;
   border-top: 1px solid #eee;
+}
+
+.alert {
+  margin-bottom: 0px;
 }
 
 .navbar-brand {
@@ -99,8 +102,8 @@ footer {
 // styling for devise partial (ex. recent recipes on user profiles)
 .recipe-partial {
   border-top: 1px solid #ddd;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   &:first-child {
     border-top: 0px;
     padding-top: 0px;
