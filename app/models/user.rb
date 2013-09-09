@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :recipes, dependent: :destroy
   has_many :stars, dependent: :destroy
+  has_many :starred_recipes, through: :stars, source: :recipe
 
   # username hooks
   VALID_USERNAME_REGEX = /\A[\w]*[a-z]+[\w]*\z/i
