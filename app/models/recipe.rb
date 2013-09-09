@@ -23,9 +23,15 @@ class Recipe < ActiveRecord::Base
   def fork_for(user)
     recipe_fork = nil
     transaction do
+      # dup the recipe
       recipe_fork = dup_with!(user_id: user.id)
-      ingredients.each { |i| i.dup_with!(recipe_id: recipe_fork.id) }
-      instructions.each { |i| i.dup_with!(recipe_id: recipe_fork.id) }
+
+      # dup the associated ingredients and instructions
+      dup_for_recipe_fork = ->i { i.dup_with!(recipe_id: recipe_fork.id) }
+      ingredients.each &dup_for_recipe_fork
+      instructions.each &dup_for_recipe_fork
+
+      # create a record in the fork table
       Fork.create(source_id: self.id, fork_id: recipe_fork.id)
     end
 

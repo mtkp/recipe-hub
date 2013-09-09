@@ -1,9 +1,9 @@
 module Duplication
   extend ActiveSupport::Concern
 
-  def dup_with!(hash = {})
+  def dup_with!(hash)
     # get a copy of the source object's attributes
-    dup_attr = attributes.deep_dup
+    dup_attr = attributes
 
     # merge in hash
     dup_attr.merge!(hash.stringify_keys)
