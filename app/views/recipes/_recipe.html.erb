@@ -1,4 +1,4 @@
 <div class="recipe-partial">
   <%= link_to truncate(recipe.title, length: 80), recipe %>
-  <small>updated on <%= recipe.updated_at.strftime('%m/%d/%y') %></small>
+  <small>updated <%= time_ago_in_words recipe.updated_at %> ago</small>
 </div>

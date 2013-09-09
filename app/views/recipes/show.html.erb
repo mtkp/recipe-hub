@@ -3,6 +3,9 @@
   <div id="header" class="row">
     <div id="title" class="col-md-9">
       <h3><%= link_to @recipe.title, @recipe %> by <%= link_to @author.username, @author %></h3>
+      <div id="time">
+        Updated <%= time_ago_in_words @recipe.updated_at %> ago.
+      </div>
       <% if @recipe.source %>
         <div id="source">
           <strong>Forked from:</strong>
@@ -46,5 +49,5 @@
     <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
     <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
   <% end %>
-  <%= link_to 'Back to recipes index', user_recipes_path(@author) %>
+  <%= link_to "All #{@author.username}'s recipes", user_recipes_path(@author) %>
 </div>

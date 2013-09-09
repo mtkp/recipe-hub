@@ -23,8 +23,12 @@
         <h3 class="panel-title">Recent recipes</h3>
       </div>
       <div class="panel-body">
-        <% @recent_recipes.each do |recipe| %>
-          <%= render recipe %>
+        <% if @recent_recipes.any? %>
+          <% @recent_recipes.each do |recipe| %>
+            <%= render recipe %>
+          <% end %>
+        <% else %>
+          <em>No recipes yet...</em>
         <% end %>
       </div>
     </div>
