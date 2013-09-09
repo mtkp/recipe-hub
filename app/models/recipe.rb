@@ -21,12 +21,14 @@ class Recipe < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   def fork_for(user)
-    recipe_fork = dup_with(user_id: user.id)
+    recipe_fork = nil
+    transaction do
+      recipe_fork = dup_with!(user_id: user.id)
+      ingredients.each { |i| i.dup_with!(recipe_id: recipe_fork.id) }
+      instructions.each { |i| i.dup_with!(recipe_id: recipe_fork.id) }
+      Fork.create(source_id: self.id, fork_id: recipe_fork.id)
+    end
 
-    ingredients.each { |i| i.dup_with(recipe_id: recipe_fork.id) }
-    instructions.each { |i| i.dup_with(recipe_id: recipe_fork.id) }
-
-    Fork.create(source_id: self.id, fork_id: recipe_fork.id)
     recipe_fork
   end
 
