@@ -41,10 +41,24 @@ footer {
   border-top: 1px solid #eee;
 }
 
+
+// alerts and errors
 .alert {
   margin-bottom: 0px;
 }
+#error-explanation {
+  margin-bottom: 20px;
+  ul {
+    padding-left: 25px;
+  }
+}
+.error-field {
+  .form-control {
+    @extend .has-error;
+  }
+}
 
+// navbar
 .navbar-brand {
   $navbar-brand-text-size: 24px;
   $navbar-brand-padding: ($navbar-height - $navbar-brand-text-size) / 2;
