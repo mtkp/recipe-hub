@@ -1,7 +1,9 @@
 <p class="instruction">
   <%= instruction.body %>
   <% if @recipe.user == current_user %>
-    <%= link_to 'Edit', edit_recipe_instruction_path(@recipe, instruction) %>
-    <%= link_to 'Delete', recipe_instruction_path(@recipe, instruction), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <small>
+      <%= link_to 'Edit', edit_recipe_instruction_path(@recipe, instruction) %> |
+      <%= link_to 'Delete', recipe_instruction_path(@recipe, instruction), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </small>
   <% end %>
 </p>

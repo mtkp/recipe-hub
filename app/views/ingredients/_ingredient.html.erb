@@ -1,7 +1,9 @@
 <li class="ingredient">
   <%= "#{ingredient.magnitude} #{ingredient.units} #{ingredient.food}" %>
   <% if @recipe.user == current_user %>
-    <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %>
-    <%= link_to 'Delete', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <small>
+      <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |
+      <%= link_to 'Delete', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </small>
   <% end %>
 </li>

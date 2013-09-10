@@ -25,7 +25,7 @@ $navbar-default-toggle-hover-bg: darken($navbar-default-bg, 7%);
 
 // change page elements before import
 $btn-success-bg: $navbar-default-bg;
-$btn-success-border: darken(adjust_hue($btn-success-bg, -10), 10%);
+$btn-success-border: darken(adjust_hue($btn-success-bg, -10), 5%);
 $link-color: lighten($navbar-default-bg, 5%);
 
  // import original bootstrap
@@ -45,8 +45,8 @@ footer {
   border-radius: 1px;
 }
 .btn-dark {
-  $btn-dark-color: #666;
-  $btn-dark-border-color: darken(adjust_hue($btn-dark-color, -10), 10%);
+  $btn-dark-color: #999;
+  $btn-dark-border-color: darken(adjust_hue($btn-dark-color, -10), 12%);
   color: white;
   background-color: $btn-dark-color;
   border-color: $btn-dark-border-color;
@@ -88,7 +88,7 @@ footer {
   .navbar-btn {
     margin-left: 10px;
     $navbar-signin-btn-color: darken($navbar-default-bg, 5%);
-    $navbar-signin-btn-border-color: darken(adjust_hue($navbar-signin-btn-color, -10), 6%);
+    $navbar-signin-btn-border-color: darken(adjust_hue($navbar-signin-btn-color, -10), 3%);
     
     background-color: $navbar-signin-btn-color;
     border: 1px solid $navbar-signin-btn-border-color;
