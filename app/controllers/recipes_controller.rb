@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @user = User.find(params[:user_id])
+    @user = User.where(username: params[:username]).first!
     @recipes = @user.recipes
   end
 
@@ -80,7 +80,7 @@ class RecipesController < ApplicationController
       @recipe = current_user.recipes.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access non-existant or unauthorized recipe"
-      redirect_to user_path(current_user), alert: "Recipe was not found."
+      redirect_to current_user, alert: "Recipe was not found."
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

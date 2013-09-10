@@ -11,13 +11,33 @@ class User < ActiveRecord::Base
 
   # username hooks
   VALID_USERNAME_REGEX = /\A[\w]*[a-z]+[\w]*\z/i
-  validates :username, presence: true,
-                       length: { minimum: 3, maximum: 20 },
+  RESERVED_WORDS = %w{ user username recipe ingredient instruction fork star
+                       devise sign_in sign_out sign_up admin }.
+                       flat_map { |word| [word, "#{word}s"] }
+  validates :username, presence: true
+  validates :username, length: { minimum: 3, maximum: 20 },
                        uniqueness: { case_sensitive: false },
                        format: { with: VALID_USERNAME_REGEX }
+  validate :exclusion_from_reserved_words
   before_save { username.downcase! }
 
   def has_starred?(recipe)
-    stars.find_by(recipe_id: recipe.id)
+    stars.where(recipe_id: recipe.id).first
   end
+
+  def to_param
+    username
+  end
+
+  private
+
+    def exclusion_from_reserved_words
+      RESERVED_WORDS.each do |word|
+        if username.try(:downcase).eql? word
+          errors.add(:username, "is not available.")
+          return
+        end
+      end
+    end
+
 end

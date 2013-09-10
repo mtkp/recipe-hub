@@ -12,7 +12,7 @@ class RecipesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, user_id: @user
+    get :index, username: @user
     assert_response :success
     assert_not_nil assigns(:recipes)
     assert_select 'tbody tr', 4

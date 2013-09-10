@@ -11,7 +11,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show, id: @user
+    get :show, username: @user
     assert_response :success
   end
 

@@ -9,7 +9,7 @@ class StarsController < ApplicationController
   end
 
   def destroy
-    @star = current_user.stars.find_by(recipe_id: @recipe.id)
+    @star = current_user.stars.where(recipe_id: @recipe.id).first
     @star.destroy if @star
     redirect_to @recipe, notice: 'Star removed.'
   end
@@ -19,10 +19,13 @@ class StarsController < ApplicationController
     when params[:recipe_id]
       @recipe = Recipe.find(params[:recipe_id])
       render 'recipe_index'
-    when params[:user_id]
-      @user = User.find(params[:user_id])
+    when params[:username]
+      @user = User.where(username: params[:username]).first!
       render 'user_index'
     end
+  rescue ActiveRecord::RecordNotFound
+    logger.error "Attempt to view stars of a non-existant user or recipe"
+    redirect_to current_user, alert: "Stars not found."
   end
 
 end

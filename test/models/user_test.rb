@@ -18,10 +18,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "username attr format" do
-    ok_usernames = [ "person", "_person_", "____k____", "per_son", "BOB"]
+    ok_usernames = [ "person", "_person_", "____k____", "per_son", "EXAMPLE", "guy"]
 
     bad_usernames = [ "___", ("a" * 21), "abc!", "ab-c", "a*c", '!@#$%^&*()',
                       "a", "aa" ]
+
+    reserved_path_words = [ "user", "username", "recipe", "ingredient",
+                           "instruction", "fork", "star", "devise", "sign_in",
+                           "sign_out", "sign_up" ]
 
     ok_usernames.each do |name|
       assert new_user(name).valid?, "#{name} should be valid"
@@ -29,6 +33,12 @@ class UserTest < ActiveSupport::TestCase
 
     bad_usernames.each do |name|
       assert new_user(name).invalid?, "#{name} should be invalid"
+    end
+
+    reserved_path_words.each do |name|
+      assert new_user(name).invalid?, "#{name} should be invalid"
+      assert new_user("#{name}s").invalid?, "#{name}s should be invalid"
+      assert new_user(name.upcase).invalid?, "#{name.upcase} should be invalid"
     end
   end
 
