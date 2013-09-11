@@ -24,7 +24,9 @@
     <% elsif alert %>
       <div class="alert alert-danger"><%= alert %></div>
     <% end %>
+
     <%= yield %>
+
   </div>
   <%= render 'layouts/footer' %>
 </body>
