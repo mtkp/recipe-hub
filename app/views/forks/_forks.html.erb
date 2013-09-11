@@ -1,4 +1,4 @@
 <strong>
   <%= link_to pluralize(recipe.forks.count, "fork"), recipe_forks_path(recipe) %>
 </strong>
-<div><%= link_to 'Fork this recipe', fork_recipe_path(@recipe), method: :post, class: "btn btn-success btn-sm" %></div>
+<div><%= link_to 'Fork recipe', fork_recipe_path(@recipe), method: :post, class: "btn btn-success btn-sm" %></div>

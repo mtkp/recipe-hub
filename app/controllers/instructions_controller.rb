@@ -45,10 +45,13 @@ class InstructionsController < ApplicationController
   # DELETE /instructions/1
   # DELETE /instructions/1.json
   def destroy
-    @instruction.destroy
     respond_to do |format|
-      format.html { redirect_to @recipe }
-      format.json { head :no_content }
+      if @instruction.destroy
+        format.html { redirect_to @recipe }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @recipe, notice: 'Instruction could not be deleted' }
+      end
     end
   end
 
@@ -63,6 +66,6 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.require(:instruction).permit(:body, :position)
+      params.require(:instruction).permit(:body)
     end
 end
