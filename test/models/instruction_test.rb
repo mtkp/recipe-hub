@@ -6,6 +6,6 @@ class InstructionTest < ActiveSupport::TestCase
     instruction = Instruction.new
     assert instruction.invalid?
     assert instruction.errors[:body].any?
-    assert instruction.errors[:position].any?
+    assert instruction.errors[:recipe_id].any?
   end
 end

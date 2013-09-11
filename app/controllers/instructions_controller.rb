@@ -18,7 +18,7 @@ class InstructionsController < ApplicationController
     @instruction = @recipe.instructions.build(instruction_params)
 
     respond_to do |format|
-      if @instruction.save
+      if @instruction.append_to_list
         format.html { redirect_to @recipe, notice: 'Instruction was successfully created.' }
         format.json { render action: 'show', status: :created, location: @instruction }
       else
@@ -46,7 +46,7 @@ class InstructionsController < ApplicationController
   # DELETE /instructions/1.json
   def destroy
     respond_to do |format|
-      if @instruction.destroy
+      if @instruction.remove_from_list
         format.html { redirect_to @recipe }
         format.json { head :no_content }
       else

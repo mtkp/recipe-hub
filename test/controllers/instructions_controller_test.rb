@@ -19,7 +19,7 @@ class InstructionsControllerTest < ActionController::TestCase
 
   test "should create instruction" do
     assert_difference('Instruction.count') do
-      post :create, instruction: { body: @instruction.body, position: @instruction.position }, recipe_id: @recipe
+      post :create, instruction: { body: @instruction.body }, recipe_id: @recipe
     end
 
     assert_redirected_to @recipe
