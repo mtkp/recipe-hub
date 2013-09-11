@@ -21,7 +21,7 @@ User.first(10).each_with_index do |user, i|
     recipe.save!
     5.times do |k|
       recipe.ingredients.build(food: "food #{i}-#{j}-#{k}").save!
-      recipe.instructions.build(body: "Be sure to blah blah blah", position: k).save!
+      recipe.instructions.build(body: "Be sure to blah blah blah", position: (k+1)).save!
     end
   end
 end

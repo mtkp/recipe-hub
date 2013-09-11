@@ -12,20 +12,24 @@ class Instruction < ActiveRecord::Base
 
   # add to end of list
   def append_to_list
-    self.position = self.class.where(recipe_id: recipe_id).last.try(:position)
+    self.position = list.last.try(:position)
     increment(:position) # instruction is not yet saved
     self.save
   end
 
-  
+  # remove instruction from list
   def remove_from_list
-    displaced_list_items = self.class.where [ "recipe_id = ? and position > ?",
-                                              recipe_id, position ]
+    displaced_list_items = list.where("position > ?", position)
     if displaced_list_items.any?
       displaced_list_items.each { |i| i.decrement! :position }
     end
     self.destroy
   end
 
+  private
+
+    def list
+      self.class.where(recipe_id: recipe_id)
+    end
 
 end
