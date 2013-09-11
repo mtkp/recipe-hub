@@ -249,4 +249,15 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  # Store digested tokens in the database
+  #
+  # In previous versions, Devise stored the tokens for confirmation, reset
+  # password and unlock directly in the database. This meant that somebody with
+  # read access to the database could use such tokens to sign in as someone else
+  # by, for example, resetting their password.
+  #
+  # In Devise 3.1, we store an encrypted token in the database and the actual
+  # token is sent only via e-mail to the user.
+  config.secret_key = 'cc54a78ae5a8f87fd536ff0e4626bb50b9bb56e7d8f2f7b207b3e685ca23c654c0a10304d76789233ba233c2c56218c6914ff3bbe19accd5d9762d9fccfb4106'
 end

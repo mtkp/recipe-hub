@@ -68,11 +68,6 @@ footer {
     padding-left: 25px;
   }
 }
-.error-field {
-  .form-control {
-    @extend .has-error;
-  }
-}
 
 
 // navbar
@@ -116,7 +111,7 @@ footer {
 }
 
 
-// styling for devise forms
+// styling for forms
 .devise-form {
   .btn {
     margin-bottom: 20px;

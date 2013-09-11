@@ -1,6 +1,5 @@
-<h1>Editing recipe</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @recipe %> |
-<%= link_to 'Back', user_recipes_path(current_user) %>
+<div class="col-md-6 col-md-offset-3">
+  <h3>Editing recipe</h3>
+  <%= render 'form' %>
+  <%= link_to 'Cancel', @recipe, class: "btn btn-default pull-right" %>
+</div>
