@@ -41,9 +41,7 @@ footer {
   padding: 20px;
   border-top: 1px solid #eee;
 }
-.btn, .form-control, .navbar-btn {
-  border-radius: 1px;
-}
+
 .btn-dark {
   $btn-dark-color: #999;
   $btn-dark-border-color: darken(adjust_hue($btn-dark-color, -10), 12%);
@@ -81,21 +79,21 @@ footer {
 }
 .navbar-text {
   .navbar-btn {
-    margin-left: 10px;
     $navbar-signin-btn-color: darken($navbar-default-bg, 5%);
     $navbar-signin-btn-border-color: darken(adjust_hue($navbar-signin-btn-color, -10), 3%);
     
     background-color: $navbar-signin-btn-color;
     border: 1px solid $navbar-signin-btn-border-color;
 
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 7px 11px;
+    margin: 1px 1px 1px 11px;
     &:hover {
       background-color: darken($navbar-signin-btn-color, 5%);
       border: 1px solid darken($navbar-signin-btn-border-color, 5%);
       text-decoration: none;
+
+      padding: 8px 12px;
+      margin: 0px 0px 0px 10px;
     }
   }
 }
@@ -140,4 +138,9 @@ footer {
     margin-left: 2px;
     color: #888;
   }
+}
+
+// button styling
+.btn, .form-control, .navbar-btn {
+  border-radius: 1px;
 }
