@@ -2,12 +2,12 @@
 
 one:
   food: MyString
-  magnitude: 1
+  count: 1.5
   units: MyString
   recipe: tacos
 
 two:
   food: MyString
-  magnitude: 1
+  count: 2.0
   units: MyString
   recipe: pasta
