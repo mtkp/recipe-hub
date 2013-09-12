@@ -19,3 +19,8 @@ pork_tacos:
   title: Pork Tacos
   notes: MyTest
   user: one
+
+new_recipe:
+  title: Recipe with no associations
+  notes: other than a user
+  user: two

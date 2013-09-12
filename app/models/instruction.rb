@@ -13,16 +13,14 @@ class Instruction < ActiveRecord::Base
   # add to end of list
   def append_to_list
     self.position = list.last.try(:position)
-    increment(:position) # instruction is not yet saved
+    increment(:position)
     self.save
   end
 
   # remove instruction from list
   def remove_from_list
-    displaced_list_items = list.where("position > ?", position)
-    if displaced_list_items.any?
-      displaced_list_items.each { |i| i.decrement! :position }
-    end
+    list.where("position > ?", position).
+      try(:each) { |instruction| instruction.decrement! :position }
     self.destroy
   end
 
