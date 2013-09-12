@@ -1,5 +1,5 @@
 <li class="ingredient">
-  <%= "#{ingredient.magnitude} #{ingredient.units} #{ingredient.food}" %>
+  <%= "#{simplify(ingredient.count)} #{ingredient.units} #{ingredient.food}" %>
   <% if @recipe.user == current_user %>
     <small>
       <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |

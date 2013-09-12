@@ -17,11 +17,11 @@ end
 
 User.first(10).each_with_index do |user, i|
   5.times do |j|
-    recipe = user.recipes.build(title: "Recipe #{i}-#{j}")
+    recipe = user.recipes.build(title: "Recipe #{i} - #{j}")
     recipe.save!
     5.times do |k|
-      recipe.ingredients.build(food: "food #{i}-#{j}-#{k}").save!
-      recipe.instructions.build(body: "Be sure to blah blah blah", position: (k+1)).save!
+      recipe.ingredients.build(food: "MyFood #{k+1}").save!
+      recipe.instructions.build(body: "MyStep \##{k+1}", position: (k+1)).save!
     end
   end
 end

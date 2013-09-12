@@ -19,7 +19,7 @@ class IngredientsControllerTest < ActionController::TestCase
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post :create, ingredient: { food: @ingredient.food, magnitude: @ingredient.magnitude, units: @ingredient.units }, recipe_id: @recipe
+      post :create, ingredient: { food: @ingredient.food, count: @ingredient.count, units: @ingredient.units }, recipe_id: @recipe
     end
 
     assert_redirected_to recipe_path(@ingredient.recipe_id)
@@ -31,7 +31,7 @@ class IngredientsControllerTest < ActionController::TestCase
   end
 
   test "should update ingredient" do
-    patch :update, id: @ingredient, ingredient: { food: @ingredient.food, magnitude: @ingredient.magnitude, units: @ingredient.units }, recipe_id: @recipe
+    patch :update, id: @ingredient, ingredient: { food: @ingredient.food, count: @ingredient.count, units: @ingredient.units }, recipe_id: @recipe
     assert_redirected_to @recipe
   end
 
