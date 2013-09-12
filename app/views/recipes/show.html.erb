@@ -2,7 +2,10 @@
 
   <div id="header" class="row">
     <div id="title" class="col-md-9">
-      <h3><%= link_to @recipe.title, @recipe %> by <%= link_to @author.username, @author %></h3>
+      <h3>
+        <span class="recipe-title"><%= @recipe.title %></span>
+        by <%= link_to @author.username, @author %>
+      </h3>
       <div id="time">
         Updated <%= time_ago_in_words @recipe.updated_at %> ago.
       </div>

@@ -34,14 +34,16 @@ $link-color: lighten($navbar-default-bg, 5%);
 
 // site wide stuff
 body {
-  padding-top: 60px;
+  padding-top: 54px;
+}
+h1, h2, h3 {
+  margin-top: 10px;
 }
 footer {
   margin-top: 40px;
   padding: 20px;
   border-top: 1px solid #eee;
 }
-
 .btn-dark {
   $btn-dark-color: #999;
   $btn-dark-border-color: darken(adjust_hue($btn-dark-color, -10), 12%);
@@ -54,6 +56,10 @@ footer {
     border-color: darken($btn-dark-border-color, 8%);
   }
 }
+.recipe-title {
+  color: darken($link-color, 13%);
+}
+
 
 
 // alerts and errors
