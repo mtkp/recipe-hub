@@ -1,4 +1,2 @@
-<div class="recipe-partial">
-  <%= link_to truncate(recipe.title, length: 80), recipe %>
-  <small>updated <%= time_ago_in_words recipe.updated_at %> ago</small>
-</div>
+<%= link_to truncate(recipe.title, length: 80), recipe %>
+<small>updated <%= time_ago_in_words recipe.updated_at %> ago</small>

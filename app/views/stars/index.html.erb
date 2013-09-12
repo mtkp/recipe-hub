@@ -1,0 +1,7 @@
+<% if @user %>
+  <h3>Recipes starred by <%= link_to @user.username, @user %></h3>
+  <%= render 'shared/list', items: @user.starred_recipes %>
+<% elsif @recipe %>
+  <h3>Users starring <%= link_to @recipe.title, @recipe %></h3>
+  <%= render 'shared/list', title: "Users starring #{@recipe.title}", items: @recipe.starring_users %>
+<% end %>

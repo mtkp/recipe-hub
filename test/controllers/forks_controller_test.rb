@@ -15,7 +15,7 @@ class ForksControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, recipe_id: @recipe
     assert_response :success
-    assert_select '#forks .fork', minimum: 1 
+    assert_select '.item-list .item', minimum: 1 
   end
 
 end
