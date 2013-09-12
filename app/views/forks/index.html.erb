@@ -1,11 +1,2 @@
-<h3>Forks of <%= @recipe.title %></h3>
-<div id="forks">
-  <% @recipe.forked_recipes.each do |recipe_fork| %>
-    <div class="fork">
-      Forked as <%= link_to recipe_fork.title, recipe_fork %>,
-      by <%= link_to recipe_fork.user.username, user_path(recipe_fork.user) %>
-    </div>
-  <% end %>
-</div>
-
-<%= link_to 'Back', @recipe %>
+<h3>Recipes forked from <%= link_to @recipe.title, @recipe %></h3>
+<%= render 'shared/list', items: @recipe.forked_recipes %>

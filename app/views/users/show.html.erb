@@ -25,10 +25,9 @@
         <h3 class="panel-title">Recent recipes</h3>
       </div>
       <div class="panel-body">
+        <div class="item-list"></div>
         <% if @recent_recipes.any? %>
-          <% @recent_recipes.each do |recipe| %>
-            <%= render recipe %>
-          <% end %>
+          <%= render 'shared/list', items: @recent_recipes %>
         <% else %>
           <em>No recipes yet...</em>
         <% end %>

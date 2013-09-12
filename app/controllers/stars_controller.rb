@@ -24,10 +24,8 @@ class StarsController < ApplicationController
     case
     when params[:recipe_id]
       @recipe = Recipe.find(params[:recipe_id])
-      render 'recipe_index'
     when params[:username]
       @user = User.where(username: params[:username]).first!
-      render 'user_index'
     end
   rescue ActiveRecord::RecordNotFound
     logger.error "Attempt to view stars of a non-existant user or recipe"

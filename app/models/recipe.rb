@@ -3,7 +3,7 @@ class Recipe < ActiveRecord::Base
 
   # stars
   has_many :stars, dependent: :destroy
-  has_many :users, through: :stars
+  has_many :starring_users, through: :stars, source: :user
   
   # pieces of the recipe
   belongs_to :user
