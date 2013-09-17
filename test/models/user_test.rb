@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
                       "a", "aa" ]
 
     reserved_path_words = [ "user", "username", "recipe", "ingredient",
-                           "instruction", "fork", "star", "devise", "sign_in",
+                           "direction", "fork", "star", "devise", "sign_in",
                            "sign_out", "sign_up" ]
 
     ok_usernames.each do |name|
