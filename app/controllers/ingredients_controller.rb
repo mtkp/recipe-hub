@@ -3,17 +3,13 @@ class IngredientsController < ApplicationController
   before_action :set_editable_recipe
   before_action :set_ingredient, except: [:new, :create]
 
-  # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
   end
 
-  # GET /ingredients/1/edit
   def edit
   end
 
-  # POST /ingredients
-  # POST /ingredients.json
   def create
     @ingredient = @recipe.ingredients.build(ingredient_params)
 
@@ -28,8 +24,6 @@ class IngredientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /ingredients/1
-  # PATCH/PUT /ingredients/1.json
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
@@ -42,8 +36,6 @@ class IngredientsController < ApplicationController
     end
   end
 
-  # DELETE /ingredients/1
-  # DELETE /ingredients/1.json
   def destroy
     @ingredient.destroy
     respond_to do |format|

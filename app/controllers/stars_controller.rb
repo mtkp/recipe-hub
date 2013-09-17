@@ -2,7 +2,6 @@ class StarsController < ApplicationController
   include CurrentRecipe
   before_action :set_viewable_recipe, except: [:index]
 
-  # POST /instructions
   def create
     @star = Star.find_or_create_by(recipe_id: @recipe.id, user_id: current_user.id)
     respond_to do |format|

@@ -3,17 +3,13 @@ class DirectionsController < ApplicationController
   before_action :set_editable_recipe
   before_action :set_direction, only: [:show, :edit, :update, :destroy]
 
-  # GET /directions/new
   def new
     @direction = Direction.new
   end
 
-  # GET /directions/1/edit
   def edit
   end
 
-  # POST /directions
-  # POST /directions.json
   def create
     @direction = @recipe.directions.build(direction_params)
 
@@ -28,8 +24,6 @@ class DirectionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /directions/1
-  # PATCH/PUT /directions/1.json
   def update
     respond_to do |format|
       if @direction.update(direction_params)
@@ -42,8 +36,6 @@ class DirectionsController < ApplicationController
     end
   end
 
-  # DELETE /directions/1
-  # DELETE /directions/1.json
   def destroy
     respond_to do |format|
       if @direction.remove_from_list
