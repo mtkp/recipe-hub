@@ -2,7 +2,7 @@ Recipehub::Application.routes.draw do
 
   resources :recipes, except: [:index] do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
-    resources :instructions, only: [:new, :edit, :update, :create, :destroy]
+    resources :directions, only: [:new, :edit, :update, :create, :destroy]
     resources :stars, only: [:create, :index]
     delete 'stars' => 'stars#destroy'
     resources :forks, only: [:index]

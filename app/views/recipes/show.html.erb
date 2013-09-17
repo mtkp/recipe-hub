@@ -41,15 +41,15 @@
     </ul>
   </div>
 
-  <div id="instructions">
-    <strong>Instructions:</strong>
-    <%= render @recipe.instructions %>
+  <div id="directions">
+    <strong>Directions:</strong>
+    <%= render @recipe.directions %>
   </div>
 
   <br />
   <% if @author == current_user %>
     <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
-    <%= link_to 'Add an instruction', new_recipe_instruction_path(@recipe) %> |
+    <%= link_to 'Add a direction', new_recipe_direction_path(@recipe) %> |
     <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
   <% end %>
   <%= link_to "All #{@author.username}'s recipes", user_recipes_path(@author) %>

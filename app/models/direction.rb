@@ -1,4 +1,4 @@
-class Instruction < ActiveRecord::Base
+class Direction < ActiveRecord::Base
   include Duplication, RecipeUpdater
   belongs_to :recipe
 
@@ -17,10 +17,10 @@ class Instruction < ActiveRecord::Base
     self.save
   end
 
-  # remove instruction from list
+  # remove direction from list
   def remove_from_list
     list.where("position > ?", position).
-      try(:each) { |instruction| instruction.decrement! :position }
+      try(:each) { |direction| direction.decrement! :position }
     self.destroy
   end
 

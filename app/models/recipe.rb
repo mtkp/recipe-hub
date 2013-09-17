@@ -8,7 +8,7 @@ class Recipe < ActiveRecord::Base
   # pieces of the recipe
   belongs_to :user
   has_many :ingredients, dependent: :destroy
-  has_many :instructions, dependent: :destroy
+  has_many :directions, dependent: :destroy
 
   # recipe forks
   has_many :forks, foreign_key: "source_id", dependent: :destroy
@@ -26,10 +26,10 @@ class Recipe < ActiveRecord::Base
       # dup the recipe
       recipe_fork = dup_with!(user_id: user.id)
 
-      # dup the associated ingredients and instructions
+      # dup the associated ingredients and directions
       dup_for_recipe_fork = ->i { i.dup_with!(recipe_id: recipe_fork.id) }
       ingredients.each &dup_for_recipe_fork
-      instructions.each &dup_for_recipe_fork
+      directions.each &dup_for_recipe_fork
 
       # create a record in the fork table
       Fork.create(source_id: self.id, fork_id: recipe_fork.id)
