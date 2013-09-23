@@ -29,28 +29,33 @@
       </div>
     </div>
   </div>
-  <div id="notes">
-    <strong>Notes:</strong>
-    <%= @recipe.notes %>
-  </div>
 
-  <div id="ingredients">
-    <strong>Ingredients:</strong>
-    <ul>
+  <div class="row">
+    <div id="notes" class="col-xs-12">
+      <p class="lead"><%= @recipe.notes %></p>
+      <% if @author == current_user %>
+        <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %>
+      <% end %>
+    </div>
+
+    <div id="ingredients" class="col-md-4">
+      <h4 >Ingredients</h4>
       <%= render @recipe.ingredients %>
-    </ul>
+      <% if @author == current_user %>
+        <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe),
+          class: "btn btn-default btn-sm" %>
+      <% end %>
+    </div>
+
+    <div id="directions" class="col-md-8">
+      <h4>Directions</h4>
+      <%= render @recipe.directions %>
+      <% if @author == current_user %>
+        <%= link_to 'Add a direction', new_recipe_direction_path(@recipe),
+        class: "btn btn-default btn-sm" %>
+      <% end %>
+    </div>
   </div>
 
-  <div id="directions">
-    <strong>Directions:</strong>
-    <%= render @recipe.directions %>
-  </div>
-
-  <br />
-  <% if @author == current_user %>
-    <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe) %> |
-    <%= link_to 'Add a direction', new_recipe_direction_path(@recipe) %> |
-    <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %> |
-  <% end %>
   <%= link_to "All #{@author.username}'s recipes", user_recipes_path(@author) %>
 </div>

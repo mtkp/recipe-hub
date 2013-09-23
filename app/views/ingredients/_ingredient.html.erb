@@ -1,4 +1,4 @@
-<li class="ingredient">
+<div class="ingredient">
   <%= "#{simplify(ingredient.count)} #{ingredient.units} #{ingredient.food}" %>
   <% if @recipe.user == current_user %>
     <small>
@@ -6,4 +6,4 @@
       <%= link_to 'Delete', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
   <% end %>
-</li>
+</div>
