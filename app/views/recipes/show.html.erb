@@ -42,20 +42,24 @@
       <h4 >Ingredients</h4>
       <%= render @recipe.ingredients %>
       <% if @author == current_user %>
-        <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe),
-          class: "btn btn-default btn-sm" %>
+        <div class="new">
+          <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe),
+            class: "btn btn-default" %>
+        </div>
       <% end %>
     </div>
 
     <div id="directions" class="col-md-8">
       <h4>Directions</h4>
-      <%= render @recipe.directions %>
+      <%= render @recipe.directions, recipe: @recipe %>
       <% if @author == current_user %>
-        <%= link_to 'Add a direction', new_recipe_direction_path(@recipe),
-        class: "btn btn-default btn-sm" %>
+        <div class="new">
+          <%= render "directions/new_btn" %>
+        </div>
       <% end %>
     </div>
   </div>
 
+  <br />
   <%= link_to "All #{@author.username}'s recipes", user_recipes_path(@author) %>
 </div>

@@ -15,13 +15,14 @@
 // change navbar before import
 $navbar-default-bg: #008732;
 $navbar-default-color: darken(adjust_hue($navbar-default-bg, -10), 10%);
-$navbar-default-link-color: white;
+$navbar-default-link-color: #fff;
 $navbar-default-brand-color: #fff;
 $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: $navbar-default-link-hover-color;
 $navbar-height: 44px;
 $navbar-default-toggle-hover-bg: darken($navbar-default-bg, 7%);
-
+$navbar-default-toggle-border-color: #fff;
+$navbar-default-toggle-icon-bar-bg: #fff;
 
 // change page elements before import
 $btn-success-bg: $navbar-default-bg;
@@ -59,7 +60,6 @@ footer {
 .recipe-title {
   color: darken($link-color, 13%);
 }
-
 
 
 // alerts and errors
