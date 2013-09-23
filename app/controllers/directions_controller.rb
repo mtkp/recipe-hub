@@ -5,6 +5,10 @@ class DirectionsController < ApplicationController
 
   def new
     @direction = Direction.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -16,9 +20,11 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.append_to_list
         format.html { redirect_to @recipe, notice: 'Direction was successfully created.' }
+        format.js { render 'create' }
         format.json { render action: 'show', status: :created, location: @direction }
       else
         format.html { render action: 'new' }
+        format.js { render action: 'new' }
         format.json { render json: @direction.errors, status: :unprocessable_entity }
       end
     end

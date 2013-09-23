@@ -1,0 +1,4 @@
+$("<%= escape_javascript render('direction', direction: @direction, recipe: @recipe) %>").
+  insertAfter('#directions div:nth-last-child(2)').effect("highlight", {}, 1200);
+
+$('#directions .new').html("<%= escape_javascript render('new_btn', recipe: @recipe) %>");

@@ -30,4 +30,15 @@
       }
     }
   }
+
+  .lead {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  #directions, #ingredients {
+    .new {
+      margin-top: 10px;
+    }
+  }
 }
