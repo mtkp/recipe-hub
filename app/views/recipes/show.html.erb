@@ -38,18 +38,17 @@
       <% end %>
     </div>
 
-    <div id="ingredients" class="col-md-4">
-      <h4 >Ingredients</h4>
-      <%= render @recipe.ingredients %>
+    <div id="ingredients" class="col-md-5 col-sm-6">
+      <h4>Ingredients</h4>
+      <%= render @recipe.ingredients, recipe: @recipe %>
       <% if @author == current_user %>
         <div class="new">
-          <%= link_to 'Add an ingredient', new_recipe_ingredient_path(@recipe),
-            class: "btn btn-default" %>
+          <%= render "ingredients/new_btn" %>
         </div>
       <% end %>
     </div>
 
-    <div id="directions" class="col-md-8">
+    <div id="directions" class="col-md-7 col-sm-6">
       <h4>Directions</h4>
       <%= render @recipe.directions, recipe: @recipe %>
       <% if @author == current_user %>

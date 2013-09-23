@@ -1,9 +1,9 @@
 <div class="ingredient">
   <%= "#{simplify(ingredient.count)} #{ingredient.units} #{ingredient.food}" %>
-  <% if @recipe.user == current_user %>
+  <% if recipe.user == current_user %>
     <small>
-      <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |
-      <%= link_to 'Delete', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_recipe_ingredient_path(recipe, ingredient) %> |
+      <%= link_to 'Delete', recipe_ingredient_path(recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
   <% end %>
 </div>

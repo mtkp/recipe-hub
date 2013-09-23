@@ -1,26 +1,26 @@
-<%= form_for([@recipe, @ingredient]) do |f| %>
+<%= form_for([@recipe, @ingredient], remote: true) do |f| %>
   <%= render 'layouts/errors', object: @ingredient %>
     <div class="row">
-      <div class="col-sm-2">
-      <div class="form-group">
-        <%= f.label :count, "Amount", class: "sr-only" %>
-        <%= f.text_field :count, class: "form-control", placeholder: 1.5%>
-      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :count, "Amount", class: "sr-only" %>
+          <%= f.text_field :count, class: "form-control", placeholder: 1.5%>
+        </div>
       </div>
       <div class="col-sm-3">
-      <div class="form-group">
-        <%= f.label :units, class: "sr-only" %>
-        <%= f.text_field :units, class: "form-control", placeholder: "cups" %>
+        <div class="form-group">
+          <%= f.label :units, class: "sr-only" %>
+          <%= f.text_field :units, class: "form-control", placeholder: "cups" %>
+        </div>
       </div>
-      </div>
-      <div class="col-sm-7">
-      <div class="form-group">
-        <%= f.label :food, class: "sr-only" %>
-        <%= f.text_field :food, class: "form-control", placeholder: "flour" %>
-      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :food, class: "sr-only" %>
+          <%= f.text_field :food, class: "form-control", placeholder: "flour" %>
+        </div>
       </div>
     </div>
-  <%= f.submit "Submit", class: "btn btn-success pull-right" %>
+  <%= link_to 'Cancel', :back, class: "btn btn-default btn-sm" %>
+  <%= f.submit "Submit", class: "btn btn-success pull-right btn-sm" %>
 <% end %>
 
-<%= link_to 'Cancel', :back, class: "btn btn-default pull-left" %>

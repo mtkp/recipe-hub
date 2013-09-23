@@ -5,6 +5,10 @@ class IngredientsController < ApplicationController
 
   def new
     @ingredient = Ingredient.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -16,9 +20,11 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.save
         format.html { redirect_to @recipe, notice: 'Ingredient was successfully created.' }
+        format.js
         format.json { render action: 'show', status: :created, location: @ingredient }
       else
         format.html { render action: 'new' }
+        format.js { render action: 'new' }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
