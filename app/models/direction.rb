@@ -20,7 +20,7 @@ class Direction < ActiveRecord::Base
   # remove direction from list
   def remove_from_list
     list.where("position > ?", position).
-      try(:each) { |direction| direction.decrement! :position }
+      try(:each) { |list_item| list_item.decrement! :position }
     self.destroy
   end
 

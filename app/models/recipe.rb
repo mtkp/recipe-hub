@@ -18,6 +18,7 @@ class Recipe < ActiveRecord::Base
   has_one  :source_recipe, through: :source, source: :source
   delegate :user, to: :source_recipe, prefix: true
 
+  # validations
   validates :title, :user_id, presence: true
 
   def fork_for(user)

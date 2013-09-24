@@ -5,5 +5,5 @@ one:
   fork: vegan_tacos
 
 two:
-  source_id: tacos
-  fork_id: pork_tacos
+  source: tacos
+  fork: pork_tacos

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class DirectionsControllerTest < ActionController::TestCase
-    setup do
+  setup do
     @direction = directions(:one)
     @recipe = @direction.recipe
     @user = @recipe.user
