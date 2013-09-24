@@ -1,2 +1,2 @@
-<h1>Collections#index</h1>
-<p>Find me in app/views/collections/index.html.erb</p>
+<h3><%= @collection.name %> recipe collection</h3>
+<%= render 'shared/list', items: @collection.recipes %>

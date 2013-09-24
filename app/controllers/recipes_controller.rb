@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:edit, :update, :destroy]
+  before_action :set_editable_recipe, except: [:index, :show, :new, :fork]
 
   def index
     @user = User.where(username: params[:username]).first!
@@ -62,9 +62,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  def branch
+    @recipe_branch = @recipe.create_branch
+    if @recipe_branch
+      redirect_to @recipe_branch, notice: "Branched from #{@recipe.title}!"
+    else
+      redirect_to source_recipe
+    end
+  end
+
   private
 
-    def set_recipe
+    def set_editable_recipe
       @recipe = current_user.recipes.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access non-existant or unauthorized recipe"

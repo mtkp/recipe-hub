@@ -11,12 +11,22 @@
       </div>
       <% if @recipe.source %>
         <div id="source">
-          <strong>Forked from:</strong>
+          Forked from
           <%= link_to @recipe.source_recipe.title, @recipe.source_recipe %>
           by
           <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
         </div>
       <% end %>
+      <div id="collection">
+        <% if @recipe.collection %>
+          Part of <%= link_to @recipe.collection.name, @recipe.collection %> collection
+        <% else %>
+          Not part of a recipe collection
+        <% end %>
+        <% if @author == current_user %>
+          | <%= link_to "Branch recipe", branch_recipe_path(@recipe), method: :post %>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-xs-12 col-md-3">
@@ -32,7 +42,7 @@
 
   <div class="row">
     <div id="notes" class="col-xs-12">
-      <p class="lead"><%= @recipe.notes %></p>
+      <%= @recipe.notes %>
       <% if @author == current_user %>
         <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %>
       <% end %>
