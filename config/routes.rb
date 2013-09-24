@@ -6,9 +6,14 @@ Recipehub::Application.routes.draw do
     resources :stars, only: [:create, :index]
     delete 'stars' => 'stars#destroy'
     resources :forks, only: [:index]
+    resources :branches, only: [:create]
     post :fork, on: :member
   end
 
+  resources :collections, only: [:show] do
+    resources :branches, only: [:update, :destroy]
+  end
+  
   devise_for :users
   devise_scope :user do
     get 'sign_in' => 'devise/sessions#new'
@@ -19,6 +24,7 @@ Recipehub::Application.routes.draw do
   get ':username', to: 'users#show', as: :user
   get ':username/recipes', to: 'recipes#index', as: :user_recipes
   get ':username/stars', to: 'stars#index', as: :user_stars
+  get ':username/collections', to: 'collections#index', as: :user_collections
 
   root 'static_pages#home'
 

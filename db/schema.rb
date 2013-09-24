@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917193642) do
+ActiveRecord::Schema.define(version: 20130923175617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "branches", force: true do |t|
+    t.integer "position"
+    t.integer "recipe_id"
+    t.integer "collection_id"
+  end
+
+  add_index "branches", ["collection_id"], name: "index_branches_on_collection_id", using: :btree
+  add_index "branches", ["recipe_id"], name: "index_branches_on_recipe_id", using: :btree
+
+  create_table "collections", force: true do |t|
+    t.string "name"
+  end
 
   create_table "directions", force: true do |t|
     t.text     "body"
