@@ -20,7 +20,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.append_to_list
         format.html { redirect_to @recipe, notice: 'Direction was successfully created.' }
-        format.js { render 'create' }
+        format.js
         format.json { render action: 'show', status: :created, location: @direction }
       else
         format.html { render action: 'new' }
