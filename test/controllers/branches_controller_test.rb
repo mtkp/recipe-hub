@@ -15,10 +15,10 @@ class BranchesControllerTest < ActionController::TestCase
 
   test "should create branch" do
     assert_difference('Branch.count') do
-      post :create, branch: { position: @branch.position }, recipe_id: recipes(:new_recipe)
+      post :create, branch: { position: @branch.position }, recipe_id: @recipe
     end
 
-    assert_redirected_to recipe_path(recipes(:new_recipe))
+    assert_redirected_to recipe_path(@recipe)
   end
 
   test "should update branch" do
