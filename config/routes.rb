@@ -6,10 +6,10 @@ Recipehub::Application.routes.draw do
     resources :stars, only: [:create, :index]
     delete 'stars' => 'stars#destroy'
     resources :forks, only: [:index]
-    post :fork, on: :member
     post :branch, on: :member
-    # resource :fork, only: [:create]
     # resource :branch, only: [:create]
+    # post :fork, on: :member
+    resource :fork, only: [:create]
   end
 
   resources :collections, only: [:show] do

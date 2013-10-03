@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_editable_recipe, except: [:index, :show, :new, :fork]
+  before_action :set_editable_recipe, except: [:index, :show, :new, :create]
 
   def index
     @user = User.where(username: params[:username]).first!
@@ -49,16 +49,6 @@ class RecipesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_recipes_url(@recipe.user) }
       format.json { head :no_content }
-    end
-  end
-
-  def fork
-    source_recipe = Recipe.find(params[:id])
-    @recipe = source_recipe.fork_for current_user
-    if @recipe
-      redirect_to @recipe, notice: "#{source_recipe.title} forked!"
-    else
-      redirect_to source_recipe
     end
   end
 

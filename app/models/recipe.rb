@@ -25,11 +25,11 @@ class Recipe < ActiveRecord::Base
   # validations
   validates :title, :user_id, presence: true
 
-  def self.duplicate!(recipe)
+  def self.duplicate!(recipe, change_params = {})
     recipe_dup = nil
     transaction do
       # dup the recipe
-      recipe_dup = recipe.create_dup!
+      recipe_dup = recipe.create_dup! change_params
 
       # dup the associated ingredients and directions
       dup_for_recipe_dup = ->i { i.create_dup!(recipe_id: recipe_dup.id) }
@@ -39,18 +39,6 @@ class Recipe < ActiveRecord::Base
     recipe_dup
   end
 
-  def fork_for(user)
-    recipe_fork = Recipe.duplicate!(self)
-
-    # update the user id
-    recipe_fork.user_id = user.id
-    recipe_fork.save!
-
-    # create a record in the fork table
-    Fork.create(source_id: self.id, fork_id: recipe_fork.id)
-
-    recipe_fork
-  end
 
   def create_branch
     if collection.nil?

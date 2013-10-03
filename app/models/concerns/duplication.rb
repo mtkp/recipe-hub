@@ -1,9 +1,9 @@
 module Duplication
   extend ActiveSupport::Concern
 
-  def create_dup!(hash = {})
+  def create_dup!(change_params = {})
     dup_object = self.dup
-    hash.each do |k, v| 
+    change_params.each do |k, v| 
       dup_object[k] = v
     end
     dup_object.save!
