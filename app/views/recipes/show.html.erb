@@ -24,7 +24,7 @@
           Not part of a recipe collection
         <% end %>
         <% if @author == current_user %>
-          | <%= link_to "Branch recipe", branch_recipe_path(@recipe), method: :post %>
+          | <%= link_to "Branch recipe", recipe_branch_path(@recipe), method: :post %>
         <% end %>
       </div>
     </div>

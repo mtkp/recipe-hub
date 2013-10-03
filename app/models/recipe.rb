@@ -39,28 +39,4 @@ class Recipe < ActiveRecord::Base
     recipe_dup
   end
 
-
-  def create_branch
-    if collection.nil?
-      new_collection = Collection.create(user_id: user_id, name: title)
-      Branch.create(recipe_id: id, collection_id: new_collection.id)
-      self.reload
-    end
-    recipe_branch = nil
-    transaction do
-      # dup the recipe
-      recipe_branch = dup_with!(user_id: user_id)
-
-      # dup the associated ingredients and directions
-      dup_for_recipe_branch = ->i { i.dup_with!(recipe_id: recipe_branch.id) }
-      ingredients.each &dup_for_recipe_branch
-      directions.each &dup_for_recipe_branch
-
-      # create a record in the fork table
-      Branch.create(recipe_id: recipe_branch.id, collection_id: collection.id)
-    end
-
-    recipe_branch
-  end
-
 end

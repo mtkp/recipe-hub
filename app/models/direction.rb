@@ -1,5 +1,5 @@
 class Direction < ActiveRecord::Base
-  include Duplication, RecipeUpdater
+  include Duplication, RecipeUpdater, SortedList
   belongs_to :recipe
 
   validates :body, :recipe_id, presence: :true
@@ -10,22 +10,9 @@ class Direction < ActiveRecord::Base
   default_scope { order("position asc") }
 
 
-  # add to end of list
-  def append_to_list
-    self.position = list.last.try(:position)
-    increment(:position)
-    self.save
-  end
-
-  # remove direction from list
-  def remove_from_list
-    list.where("position > ?", position).
-      try(:each) { |list_item| list_item.decrement! :position }
-    self.destroy
-  end
-
   private
-
+  
+    # defined for sorted list module
     def list
       self.class.where(recipe_id: recipe_id)
     end

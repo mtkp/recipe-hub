@@ -52,15 +52,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def branch
-    @recipe_branch = @recipe.create_branch
-    if @recipe_branch
-      redirect_to @recipe_branch, notice: "Branched from #{@recipe.title}!"
-    else
-      redirect_to source_recipe
-    end
-  end
-
   private
 
     def set_editable_recipe
