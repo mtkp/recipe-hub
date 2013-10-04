@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :recipes, dependent: :destroy
-  has_many :collections, dependent: :destroy
   has_many :stars, dependent: :destroy
   has_many :starred_recipes, through: :stars, source: :recipe
 
   # username hooks
   VALID_USERNAME_REGEX = /\A[\w]*[a-z]+[\w]*\z/i
   RESERVED_WORDS = %w{ user username recipe ingredient direction fork star
-                       devise sign_in sign_out sign_up admin collection branch}.
+                       devise sign_in sign_out sign_up admin }.
                        flat_map { |word| [word, "#{word}s"] }
   validates :username, presence: true
   validates :username, length: { minimum: 3, maximum: 20 },
