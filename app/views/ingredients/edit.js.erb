@@ -1,0 +1,7 @@
+$('#ingredients #ingredient-<%= @ingredient.id %>').
+  html("<%= escape_javascript render('form', recipe: @recipe) %>").
+    append("<%= escape_javascript render('shared/cancel_btn') %>");
+$('#ingredients #ingredient-<%= @ingredient.id %> .cancel').click( function() {
+  $(this).parent().
+    html("<%= escape_javascript render('ingredient', ingredient: @ingredient.reload, recipe: @recipe) %>");
+});

@@ -9,9 +9,7 @@ class Direction < ActiveRecord::Base
 
   default_scope { order("position asc") }
 
-
   private
-  
     # defined for sorted list module
     def list
       self.class.where(recipe_id: recipe_id)

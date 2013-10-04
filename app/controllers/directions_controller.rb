@@ -34,9 +34,11 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.update(direction_params)
         format.html { redirect_to @recipe, notice: 'Direction was successfully updated.' }
+        format.js
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.js { render action: 'edit' }
         format.json { render json: @direction.errors, status: :unprocessable_entity }
       end
     end

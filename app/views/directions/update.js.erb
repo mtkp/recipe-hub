@@ -1,0 +1,3 @@
+$('#directions #direction-<%= @direction.id %>').
+  html("<%= escape_javascript render('direction', direction: @direction, recipe: @recipe) %>").
+    effect("highlight", {}, 1200);
