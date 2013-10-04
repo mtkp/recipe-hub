@@ -1,7 +1,8 @@
-$('#ingredients .new').html("<%= escape_javascript render('form', recipe: @recipe) %>");
-$('#ingredients .new').html("<%= escape_javascript render('form', recipe: @recipe) %>");
-$('#ingredients .new').append("<%= escape_javascript render('shared/cancel_btn') %>");
+$('#ingredients .new').
+  html("<%= escape_javascript render('form', recipe: @recipe) %>").
+    append("<%= escape_javascript render('shared/cancel_btn') %>");
 $('.new .cancel').click( function() {
-  $(this).parent().html("<%= escape_javascript render('new_btn', recipe: @recipe) %>");
+  $(this).parent().
+    html("<%= escape_javascript render('shared/new_btn', item: :ingredient) %>");
 });
 

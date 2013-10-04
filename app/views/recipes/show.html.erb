@@ -51,7 +51,7 @@
       <%= render @recipe.ingredients, recipe: @recipe %>
       <% if @author == current_user %>
         <div class="new">
-          <%= render "ingredients/new_btn" %>
+          <%= render "shared/new_btn", item: :ingredient %>
         </div>
       <% end %>
     </div>
@@ -61,7 +61,7 @@
       <%= render @recipe.directions, recipe: @recipe %>
       <% if @author == current_user %>
         <div class="new">
-          <%= render "directions/new_btn" %>
+          <%= render "shared/new_btn", item: :direction %>
         </div>
       <% end %>
     </div>
