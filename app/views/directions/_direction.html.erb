@@ -2,7 +2,7 @@
   <%= direction.body %>
   <% if recipe.user == current_user %>
     <small>
-      <%= link_to 'Edit', edit_recipe_direction_path(recipe, direction) %> |
+      <%= link_to 'Edit', edit_recipe_direction_path(recipe, direction), remote: true %> |
       <%= link_to 'Delete', recipe_direction_path(recipe, direction), method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
   <% end %>
