@@ -25,11 +25,11 @@ class Recipe < ActiveRecord::Base
   # validations
   validates :title, :user_id, presence: true
 
-  def self.duplicate!(recipe)
+  def self.duplicate!(recipe, change_params = {})
     recipe_dup = nil
     transaction do
       # dup the recipe
-      recipe_dup = recipe.create_dup!
+      recipe_dup = recipe.create_dup! change_params
 
       # dup the associated ingredients and directions
       dup_for_recipe_dup = ->i { i.create_dup!(recipe_id: recipe_dup.id) }
@@ -37,42 +37,6 @@ class Recipe < ActiveRecord::Base
       recipe.directions.each &dup_for_recipe_dup
     end
     recipe_dup
-  end
-
-  def fork_for(user)
-    recipe_fork = Recipe.duplicate!(self)
-
-    # update the user id
-    recipe_fork.user_id = user.id
-    recipe_fork.save!
-
-    # create a record in the fork table
-    Fork.create(source_id: self.id, fork_id: recipe_fork.id)
-
-    recipe_fork
-  end
-
-  def create_branch
-    if collection.nil?
-      new_collection = Collection.create(user_id: user_id, name: title)
-      Branch.create(recipe_id: id, collection_id: new_collection.id)
-      self.reload
-    end
-    recipe_branch = nil
-    transaction do
-      # dup the recipe
-      recipe_branch = dup_with!(user_id: user_id)
-
-      # dup the associated ingredients and directions
-      dup_for_recipe_branch = ->i { i.dup_with!(recipe_id: recipe_branch.id) }
-      ingredients.each &dup_for_recipe_branch
-      directions.each &dup_for_recipe_branch
-
-      # create a record in the fork table
-      Branch.create(recipe_id: recipe_branch.id, collection_id: collection.id)
-    end
-
-    recipe_branch
   end
 
 end

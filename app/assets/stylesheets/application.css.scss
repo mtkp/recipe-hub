@@ -34,6 +34,9 @@ $link-color: lighten($navbar-default-bg, 5%);
 
 
 // site wide stuff
+html {
+  background-color: #eee;
+}
 body {
   padding-top: 54px;
 }
@@ -43,7 +46,7 @@ h1, h2, h3 {
 footer {
   margin-top: 40px;
   padding: 20px;
-  border-top: 1px solid #eee;
+  background-color: #eee;
 }
 .btn-dark {
   $btn-dark-color: #999;
