@@ -17,14 +17,12 @@
           <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
         </div>
       <% end %>
-      <div id="collection">
-        <% if @recipe.collection %>
-          Part of <%= link_to @recipe.collection.name, @recipe.collection %> collection
-        <% else %>
-          Not part of a recipe collection
+      <div id="variation">
+        <% if nil %>
+          <%= link_to "Variations", '#' %>
         <% end %>
         <% if @author == current_user %>
-          | <%= link_to "Branch recipe", recipe_branch_path(@recipe), method: :post %>
+          <%= link_to "Make a variation", '#' %>
         <% end %>
       </div>
     </div>
