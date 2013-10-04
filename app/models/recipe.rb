@@ -18,10 +18,6 @@ class Recipe < ActiveRecord::Base
   has_one  :source_recipe, through: :source, source: :source
   delegate :user, to: :source_recipe, prefix: true
 
-  # recipe collections
-  has_one :branch, dependent: :destroy
-  has_one :collection, through: :branch
-
   # validations
   validates :title, :user_id, presence: true
 
