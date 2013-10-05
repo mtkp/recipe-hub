@@ -1,3 +1,0 @@
-$('#ingredients #ingredient-<%= @ingredient.id %>').
-  html("<%= escape_javascript render('ingredient', ingredient: @ingredient, recipe: @recipe) %>").
-    effect("highlight", {}, 1200);

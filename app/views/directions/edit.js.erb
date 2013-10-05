@@ -1,7 +1,0 @@
-$('#directions #direction-<%= @direction.id %>').
-  html("<%= escape_javascript render('form', recipe: @recipe) %>").
-    append("<%= escape_javascript render('shared/cancel_btn') %>");
-$('#directions #direction-<%= @direction.id %> .cancel').click( function() {
-  $(this).parent().
-    html("<%= escape_javascript render('direction', direction: @direction.reload, recipe: @recipe) %>");
-});

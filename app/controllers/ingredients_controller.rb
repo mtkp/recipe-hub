@@ -12,6 +12,10 @@ class IngredientsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js { render template: 'shared/edit_item', locals: { item: @ingredient } }
+    end
   end
 
   def create
@@ -34,7 +38,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.update(ingredient_params)
         format.html { redirect_to @recipe, notice: 'Ingredient was successfully updated.' }
-        format.js
+        format.js { render template: 'shared/update_item', locals: { item: @ingredient } }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

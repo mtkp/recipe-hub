@@ -12,6 +12,10 @@ class DirectionsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js { render template: 'shared/edit_item', locals: { item: @direction } }
+    end
   end
 
   def create
@@ -34,7 +38,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.update(direction_params)
         format.html { redirect_to @recipe, notice: 'Direction was successfully updated.' }
-        format.js
+        format.js { render template: 'shared/update_item', locals: { item: @direction } }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
