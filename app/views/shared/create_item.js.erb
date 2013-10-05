@@ -1,4 +1,4 @@
-$("<%= escape_javascript render item, recipe: @recipe %>").
+$("<%= escape_javascript render(item, recipe: @recipe) %>").
   insertBefore('#<%= item.class.model_name.plural %> .new').effect("highlight", {}, 1200);
 
 $('#<%= item.class.model_name.plural %> .new').

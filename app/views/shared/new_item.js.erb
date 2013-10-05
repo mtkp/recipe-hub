@@ -1,5 +1,5 @@
 $('#<%= item.class.model_name.plural %> .new').
-  html("<%= escape_javascript render( 'form' ) %>").
+  html("<%= escape_javascript render('form') %>").
     append("<%= escape_javascript render('shared/cancel_btn') %>");
 $('#<%= item.class.model_name.plural %> .new .cancel').click( function() {
   $(this).parent().
