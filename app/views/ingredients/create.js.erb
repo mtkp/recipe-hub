@@ -1,5 +1,0 @@
-$("<%= escape_javascript render('ingredient', ingredient: @ingredient, recipe: @recipe) %>").
-  insertBefore('#ingredients .new').effect("highlight", {}, 1200);
-
-$('#ingredients .new').
-  html("<%= escape_javascript render('shared/new_btn', item: :ingredient) %>");

@@ -1,5 +1,0 @@
-$("<%= escape_javascript render('direction', direction: @direction, recipe: @recipe) %>").
-  insertBefore('#directions .new').effect("highlight", {}, 1200);
-
-$('#directions .new').
-  html("<%= escape_javascript render('shared/new_btn', item: :direction) %>");

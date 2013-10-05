@@ -7,7 +7,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new
     respond_to do |format|
       format.html
-      format.js
+      format.js { render template: 'shared/new_item', locals: { item: @ingredient } }
     end
   end
 
@@ -20,7 +20,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.save
         format.html { redirect_to @recipe, notice: 'Ingredient was successfully created.' }
-        format.js
+        format.js { render template: 'shared/create_item', locals: { item: @ingredient, recipe: @recipe } }
         format.json { render action: 'show', status: :created, location: @ingredient }
       else
         format.html { render action: 'new' }
