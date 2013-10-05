@@ -48,7 +48,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.remove_from_list
         format.html { redirect_to @recipe }
-        format.js
+        format.js { render template: 'shared/destroy_item', locals: { item: @direction } }
         format.json { head :no_content }
       else
         format.html { redirect_to @recipe, notice: 'Direction could not be deleted' }

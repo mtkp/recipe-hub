@@ -48,7 +48,7 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
     respond_to do |format|
       format.html { redirect_to @recipe }
-      format.js
+      format.js { render template: 'shared/destroy_item', locals: { item: @ingredient } }
       format.json { head :no_content }
     end
   end
