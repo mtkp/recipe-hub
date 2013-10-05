@@ -3,9 +3,8 @@
 
   <div class="form-group">
     <%= f.label :body, class: "sr-only" %>
-    <%= f.text_area :body, rows: 4, class: "form-control" %>
+    <%= f.text_area :body, rows: 3, class: "form-control" %>
   </div> 
 
-  <%= link_to 'Cancel', :back, class: "btn btn-default btn-sm" %>
   <%= f.submit "Submit", class: "btn btn-success pull-right btn-sm" %>
 <% end %>

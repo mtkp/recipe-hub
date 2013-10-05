@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.effect-highlight
+//= require jquery.ui.effect-blind
 //= require turbolinks
 //= require twitter/bootstrap
 //= require_tree .

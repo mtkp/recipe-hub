@@ -7,11 +7,15 @@ class DirectionsController < ApplicationController
     @direction = Direction.new
     respond_to do |format|
       format.html
-      format.js
+      format.js { render template: 'shared/new_item', locals: { item: @direction } }
     end
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js { render template: 'shared/edit_item', locals: { item: @direction } }
+    end
   end
 
   def create
@@ -20,7 +24,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.append_to_list
         format.html { redirect_to @recipe, notice: 'Direction was successfully created.' }
-        format.js
+        format.js { render template: 'shared/create_item', locals: { item: @direction } }
         format.json { render action: 'show', status: :created, location: @direction }
       else
         format.html { render action: 'new' }
@@ -34,9 +38,11 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.update(direction_params)
         format.html { redirect_to @recipe, notice: 'Direction was successfully updated.' }
+        format.js { render template: 'shared/update_item', locals: { item: @direction } }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.js { render action: 'edit' }
         format.json { render json: @direction.errors, status: :unprocessable_entity }
       end
     end
@@ -46,6 +52,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       if @direction.remove_from_list
         format.html { redirect_to @recipe }
+        format.js { render template: 'shared/destroy_item', locals: { item: @direction } }
         format.json { head :no_content }
       else
         format.html { redirect_to @recipe, notice: 'Direction could not be deleted' }

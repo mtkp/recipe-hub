@@ -1,0 +1,5 @@
+$("<%= escape_javascript render(item, recipe: @recipe) %>").
+  insertBefore('#<%= item.class.model_name.plural %> .new').effect("highlight", {}, 1200);
+
+$('#<%= item.class.model_name.plural %> .new').
+  html("<%= escape_javascript render('shared/new_btn', item: item.class.model_name.i18n_key) %>");

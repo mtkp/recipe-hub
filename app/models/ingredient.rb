@@ -6,4 +6,6 @@ class Ingredient < ActiveRecord::Base
   after_save :touch_recipe!
   after_destroy :touch_recipe!
 
+  default_scope { order("created_at asc") }
+
 end

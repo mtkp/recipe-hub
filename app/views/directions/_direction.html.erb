@@ -1,9 +1,12 @@
-<div class="direction">
+<div class="direction" id="direction-<%= direction.id %>">
   <%= direction.body %>
   <% if recipe.user == current_user %>
     <small>
-      <%= link_to 'Edit', edit_recipe_direction_path(recipe, direction) %> |
-      <%= link_to 'Delete', recipe_direction_path(recipe, direction), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_recipe_direction_path(recipe, direction),
+      remote: true %>
+      |
+      <%= link_to 'Delete', recipe_direction_path(recipe, direction), 
+        method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
     </small>
   <% end %>
 </div>

@@ -1,0 +1,7 @@
+$('#<%= item.class.model_name.singular %>-<%= item.id %>').
+  html("<%= escape_javascript render('form', recipe: @recipe) %>").
+    append("<%= escape_javascript render('shared/cancel_btn') %>");
+$('#<%= item.class.model_name.singular %>-<%= item.id %> .cancel').click( function() {
+  $(this).parent().
+    html("<%= escape_javascript render(item.reload, recipe: @recipe) %>");
+});

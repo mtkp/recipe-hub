@@ -1,0 +1,3 @@
+$('#<%= item.class.model_name.singular %>-<%= item.id %>').
+  html("<%= escape_javascript render(item, recipe: @recipe) %>").
+    effect("highlight", {}, 1200);
