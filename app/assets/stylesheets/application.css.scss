@@ -13,8 +13,8 @@
  */
 
 // change navbar before import
-$navbar-default-bg: #008732;
-$navbar-default-color: darken(adjust_hue($navbar-default-bg, -10), 10%);
+$navbar-default-bg: adjust_hue(#008732, -3);
+$navbar-default-color: darken(adjust_hue($navbar-default-bg, -5), 15%);
 $navbar-default-link-color: #fff;
 $navbar-default-brand-color: #fff;
 $navbar-default-link-hover-color: #fff;
@@ -28,6 +28,7 @@ $navbar-default-toggle-icon-bar-bg: #fff;
 $btn-success-bg: $navbar-default-bg;
 $btn-success-border: darken(adjust_hue($btn-success-bg, -10), 5%);
 $link-color: lighten($navbar-default-bg, 5%);
+$nav-pills-active-link-hover-bg: $navbar-default-bg;
 
  // import original bootstrap
 @import "twitter/bootstrap";
@@ -62,6 +63,11 @@ footer {
 }
 .recipe-title {
   color: darken($link-color, 13%);
+}
+.nav > li > a {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 
@@ -129,7 +135,12 @@ footer {
   }
 }
 .form-group {
-  margin-bottom: 5px;
+  .help-block {
+    margin-top: 2px;
+    margin-left: 4px;
+    font-size: .8em;
+  }
+  //margin-bottom: 5px;
 }
 
 
@@ -161,6 +172,9 @@ footer {
 }
 
 // button styling
-.btn, .form-control, .navbar-btn {
-  border-radius: 1px;
+.btn, .form-control, .navbar-btn, .panel {
+  $default-border-radius: 2px;
+  -webkit-border-radius: $default-border-radius;
+  -moz-border-radius: $default-border-radius;
+  border-radius: $default-border-radius;
 }
