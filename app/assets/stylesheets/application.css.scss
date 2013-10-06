@@ -73,6 +73,7 @@ footer {
 
 // alerts and errors
 .alert {
+  padding: 10px;
   margin-bottom: 0px;
 }
 #error-explanation {
@@ -172,7 +173,7 @@ footer {
 }
 
 // button styling
-.btn, .form-control, .navbar-btn, .panel {
+.btn, .form-control, .navbar-btn, .panel, .alert {
   $default-border-radius: 2px;
   -webkit-border-radius: $default-border-radius;
   -moz-border-radius: $default-border-radius;
