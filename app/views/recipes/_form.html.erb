@@ -2,12 +2,13 @@
   <%= render 'layouts/errors', object: @recipe %>
 
   <div class="form-group">
-    <%= f.label :title, "Recipe title" %>
+    <%= f.label :title, "Title" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :notes, "Recipe notes" %>
-    <%= f.text_area :notes, rows: 3, class: "form-control" %>
+    <%= f.label :notes, "Notes" %>
+    <%= f.text_area :notes, rows: 3, class: "form-control",
+        placeholder: "... include a short description and the recipe yield" %>
   </div>
   <div class="actions">
   <%= f.submit "Submit", class: "btn btn-success pull-right" %>
