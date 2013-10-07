@@ -30,6 +30,8 @@
   <% end %>
 
   <% if @user == current_user %>
-    <%= link_to 'Create New Recipe', new_recipe_path, class: "btn btn-success" %>
+    <%= link_to 'Create new recipe', new_recipe_path, class: "btn btn-success" %>
   <% end %>
 </div>
+
+<%= link_to "Profile for #{@user.username}", @user %>
