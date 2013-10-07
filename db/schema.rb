@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917193642) do
+ActiveRecord::Schema.define(version: 20131007183354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,22 @@ ActiveRecord::Schema.define(version: 20130917193642) do
   add_index "stars", ["recipe_id", "user_id"], name: "index_stars_on_recipe_id_and_user_id", unique: true, using: :btree
   add_index "stars", ["recipe_id"], name: "index_stars_on_recipe_id", using: :btree
   add_index "stars", ["user_id"], name: "index_stars_on_user_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["recipe_id"], name: "index_taggings_on_recipe_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

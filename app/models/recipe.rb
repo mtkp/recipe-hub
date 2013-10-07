@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   include Duplication
+  include Taggable
 
   # stars
   has_many :stars, dependent: :destroy
@@ -9,6 +10,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :ingredients, dependent: :destroy
   has_many :directions, dependent: :destroy
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   # recipe forks
   has_many :forks, foreign_key: "source_id", dependent: :destroy

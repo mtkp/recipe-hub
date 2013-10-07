@@ -39,12 +39,19 @@
   </div>
 
   <div class="row">
+    <div id="tags" class="col-xs-12">
+      <%= raw @recipe.tags.map(&:name).map { |t| link_to t, '', class: "btn btn-default btn-xs" }.join(' ') %>
+    </div>
+
     <div id="notes" class="col-xs-12">
       <%= @recipe.notes %>
-      <% if @author == current_user %>
-        <%= link_to 'Edit recipe title or notes', edit_recipe_path(@recipe) %>
-      <% end %>
     </div>
+    
+    <% if @author == current_user %>
+      <div id="edit-recipe" class="col-xs-12">
+        <%= link_to 'Edit recipe title, notes, or tags', edit_recipe_path(@recipe) %>
+      </div>
+    <% end %>
 
     <div id="ingredients" class="col-md-5 col-sm-6">
       <h4>Ingredients</h4>

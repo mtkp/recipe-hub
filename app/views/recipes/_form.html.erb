@@ -10,6 +10,10 @@
     <%= f.text_area :notes, rows: 3, class: "form-control",
         placeholder: "... include a short description and the recipe yield" %>
   </div>
+  <div class="form-group">
+    <%= f.label :tag_list, "Tags (separate with commas)" %>
+    <%= f.text_field :tag_list, class: "form-control" %>
+  </div>
   <div class="actions">
   <%= f.submit "Submit", class: "btn btn-success pull-right" %>
   </div>
