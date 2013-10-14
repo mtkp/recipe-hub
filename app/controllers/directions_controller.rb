@@ -28,7 +28,7 @@ class DirectionsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @direction }
       else
         format.html { render action: 'new' }
-        format.js { render action: 'new' }
+        format.js { render template: 'shared/new_item', locals: { item: @direction } }
         format.json { render json: @direction.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +42,7 @@ class DirectionsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.js { render action: 'edit' }
+        format.js { render template: 'shared/edit_item', locals: { item: @direction } }
         format.json { render json: @direction.errors, status: :unprocessable_entity }
       end
     end

@@ -61,6 +61,19 @@ footer {
     border-color: darken($btn-dark-border-color, 8%);
   }
 }
+.btn-tag {
+  margin: 5px;
+  $btn-tag-color: #fff;
+  $btn-tag-border-color: darken(adjust_hue($btn-tag-color, -10), 12%);
+  color: black;
+  background-color: $btn-tag-color;
+  border-color: $btn-tag-border-color;
+  &:hover {
+    color: white;
+    background-color: lighten($navbar-default-bg, 6%);
+    border-color: $navbar-default-bg;
+  }
+}
 .recipe-title {
   color: darken($link-color, 13%);
 }

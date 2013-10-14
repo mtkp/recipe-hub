@@ -28,7 +28,7 @@ class IngredientsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @ingredient }
       else
         format.html { render action: 'new' }
-        format.js { render action: 'new' }
+        format.js { render template: 'shared/new_item', locals: { item: @ingredient } }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +42,7 @@ class IngredientsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.js { render action: 'edit' }
+        format.js { render template: 'shared/edit_item', locals: { item: @ingredient } }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
