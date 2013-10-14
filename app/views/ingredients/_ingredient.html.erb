@@ -1,12 +1,14 @@
 <div class="ingredient" id="ingredient-<%= ingredient.id %>">
-  <%= "#{simplify(ingredient.count)} #{ingredient.units} #{ingredient.food}" %>
-  <% if recipe.user == current_user %>
-    <small>
-      <%= link_to 'Edit', edit_recipe_ingredient_path(recipe, ingredient),
-        remote: true %>
-      |
-      <%= link_to 'Delete', recipe_ingredient_path(recipe, ingredient),
-        method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-    </small>
-  <% end %>
+  <div class="content">
+    <%= "#{simplify(ingredient.count)} #{ingredient.units} #{ingredient.food}" %>
+    <% if recipe.user == current_user %>
+      <small>
+        <%= link_to 'Edit', edit_recipe_ingredient_path(recipe, ingredient),
+          remote: true %>
+        |
+        <%= link_to 'Delete', recipe_ingredient_path(recipe, ingredient),
+          method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+      </small>
+    <% end %>
+  </div>
 </div>

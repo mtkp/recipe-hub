@@ -3,5 +3,5 @@ $('#<%= item.class.model_name.singular %>-<%= item.id %>').
     append("<%= escape_javascript render('shared/cancel_btn') %>");
 $('#<%= item.class.model_name.singular %>-<%= item.id %> .cancel').click( function() {
   $(this).parent().
-    html("<%= escape_javascript render(item.reload, recipe: @recipe) %>");
+    replaceWith("<%= escape_javascript render(item.reload, recipe: @recipe) %>");
 });

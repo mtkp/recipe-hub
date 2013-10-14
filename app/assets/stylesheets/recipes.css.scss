@@ -45,6 +45,22 @@
     > div {
       margin-bottom: 10px;
     }
+    .ingredient {
+      .form-group, .form-group input {
+        height: 28px;
+      }
+    }
+    .direction {
+      .form-group textarea {
+        padding: 3px 13px;
+      }
+    }
+    .ingredient, .direction {
+      .content {
+        padding: 4px 4px 4px 13px;
+        border-left: 1px solid #ccc;
+      }
+    }
   }
 }
 
