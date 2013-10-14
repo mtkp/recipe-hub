@@ -8,6 +8,8 @@ Recipehub::Application.routes.draw do
     resources :forks, only: [:index]
     resource :fork, only: [:create]
   end
+
+  get 'tags/:name', to: 'tags#show', as: :tag
   
   devise_for :users
   devise_scope :user do

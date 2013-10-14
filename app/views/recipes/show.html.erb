@@ -40,7 +40,7 @@
 
   <div class="row">
     <div id="tags" class="col-xs-12">
-      <%= raw @recipe.tags.map(&:name).map { |t| link_to t, '', class: "btn btn-default btn-xs" }.join(' ') %>
+      <%= render @recipe.tags %>
     </div>
 
     <div id="notes" class="col-xs-12">
