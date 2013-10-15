@@ -7,6 +7,10 @@ class Tag < ActiveRecord::Base
 
   before_validation :remove_whitespace_and_uppercase
 
+  def to_param
+    name
+  end
+
   private
     def remove_whitespace_and_uppercase
       return if name.nil?
