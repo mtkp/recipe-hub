@@ -45,21 +45,19 @@
     > div {
       margin-bottom: 10px;
     }
-    .ingredient {
-      .form-group, .form-group input {
-        height: 28px;
-      }
+    .content {
+      padding: 4px 4px 4px 13px;
+      border-left: 1px solid #ccc;
     }
-    .direction {
-      .form-group textarea {
-        padding: 3px 13px;
-      }
+  }
+  #ingredients {
+    .form-group, .form-group input {
+      height: 28px;
     }
-    .ingredient, .direction {
-      .content {
-        padding: 4px 4px 4px 13px;
-        border-left: 1px solid #ccc;
-      }
+  }
+  #directions {
+    .form-group textarea {
+      padding: 3px 13px;
     }
   }
 }
