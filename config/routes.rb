@@ -4,18 +4,20 @@ Recipehub::Application.routes.draw do
     resources :ingredients, only: [:new, :edit, :update, :create, :destroy]
     resources :directions, only: [:new, :edit, :update, :create, :destroy]
     resources :stars, only: [:create, :index]
-    delete 'stars' => 'stars#destroy'
+    delete 'stars', to: 'stars#destroy'
     resources :forks, only: [:index]
     resource :fork, only: [:create]
   end
 
   get 'tags/:name', to: 'tags#show', as: :tag
   
+  get 'search', to: 'search#show'
+
   devise_for :users
   devise_scope :user do
-    get 'sign_in' => 'devise/sessions#new'
-    get 'sign_out' => 'devise/sessions#destroy'
-    get 'sign_up' => 'devise/registrations#new'
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_out', to: 'devise/sessions#destroy'
+    get 'sign_up', to: 'devise/registrations#new'
   end
   
   get ':username', to: 'users#show', as: :user

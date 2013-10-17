@@ -24,6 +24,16 @@ class Recipe < ActiveRecord::Base
   # validations
   validates :title, :user_id, presence: true
 
+  def self.search(string)
+    if string && !string.empty?
+      title_search = where(['lower(title) LIKE ?', "%#{string}%".downcase]).
+        order(updated_at: :desc)
+      tag_search = joins(:tags).where(['lower(tags.name) LIKE ?', "%#{string}%".downcase]).
+        order(updated_at: :desc)
+      (title_search + tag_search).uniq
+    end
+  end
+
   def self.duplicate!(recipe, change_params = {})
     recipe_dup = nil
     transaction do

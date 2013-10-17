@@ -1,0 +1,6 @@
+<%= render 'form' %>
+<% if @found_items %>
+  <%= render 'shared/list', items: @found_items %>
+<% else %>
+  <em>Came up empty...</em>
+<% end %>

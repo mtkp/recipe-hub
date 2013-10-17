@@ -13,6 +13,7 @@
     <% else %>
       <h3>You are viewing the profile page for <%= @user.username %></h3>
     <% end %>
+    <%= render "search/form" %>
     <ul class="nav nav-pills">
       <li><%= link_to "View recipe creations", user_recipes_path(@user) %></li>
       <li><%= link_to "View recipe book (stars)", user_stars_path(@user) %></li>
