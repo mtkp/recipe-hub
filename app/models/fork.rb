@@ -1,5 +1,5 @@
 class Fork < ActiveRecord::Base
-  belongs_to :source, class_name: 'Recipe'
+  belongs_to :source, class_name: 'Recipe', counter_cache: true
   belongs_to :fork, class_name: 'Recipe'
 
   validates :source_id, :fork_id, presence: true
