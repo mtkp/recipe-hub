@@ -25,12 +25,9 @@ class Recipe < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   def self.search(string)
+    search_string = searchify string
     if string && !string.empty?
-      title_search = where(['lower(title) LIKE ?', "%#{string}%".downcase]).
-        order(updated_at: :desc)
-      tag_search = joins(:tags).where(['lower(tags.name) LIKE ?', "%#{string}%".downcase]).
-        order(updated_at: :desc)
-      (title_search + tag_search).uniq
+      (search_titles(search_string) + search_tags(search_string)).uniq
     end
   end
 
@@ -47,5 +44,18 @@ class Recipe < ActiveRecord::Base
     end
     recipe_dup
   end
+
+  private
+    def self.searchify(string)
+      string.downcase.strip
+    end
+
+    def self.search_titles(string)
+       where(['lower(title) LIKE ?', "%#{string}%"])
+    end
+
+    def self.search_tags(string)
+      joins(:tags).where(['lower(tags.name) LIKE ?', "%#{string}%"])
+    end
 
 end
