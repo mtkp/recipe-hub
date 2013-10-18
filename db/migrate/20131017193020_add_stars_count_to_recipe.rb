@@ -8,6 +8,6 @@ class AddStarsCountToRecipe < ActiveRecord::Migration
   end
 
   def down
-    remove_colum :recipes, :stars_count
+    remove_column :recipes, :stars_count
   end
 end
