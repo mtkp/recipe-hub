@@ -25,10 +25,10 @@ class Recipe < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   def self.search(string)
-    if string && !string.empty?
-      (search_titles(searchify string) + search_tags(searchify string)).uniq
-    else
+    if string.nil? || string.empty?
       none
+    else
+      search_titles_and_tags_for string
     end
   end
 
@@ -49,15 +49,17 @@ class Recipe < ActiveRecord::Base
   private
     def self.searchify(string)
       return unless string
-      string.downcase.strip
+      string.downcase
     end
 
-    def self.search_titles(string)
-       where(['lower(title) LIKE ?', "%#{string}%"]).order('stars_count desc')
+    def self.search_titles_and_tags_for(string)
+      string = searchify string
+      includes(:tags).where(
+        ['lower(title) LIKE ? OR lower(tags.name) LIKE ?', "%#{string}%", "%#{string}%"]
+      ).references(:tags).order('stars_count desc')
     end
 
     def self.search_tags(string)
-      joins(:tags).where(['lower(tags.name) LIKE ?', "%#{string}%"]).order('stars_count desc')
     end
 
 end

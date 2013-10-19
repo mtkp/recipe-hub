@@ -1,3 +1,4 @@
 <%= render 'form' %>
-Found <%= pluralize(@found_items.count, "match") %><br /><br />
-<%= render 'shared/list', items: @found_items %>
+<div id="results">
+  <%= render 'results' %>
+</div>

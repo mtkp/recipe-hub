@@ -1,5 +1,6 @@
 <div id="search-form">
-  <%= form_tag('/search', { method: "get", class: "form-inline" }) do |f| %>
+  <%= form_tag('/search', { method: "get", remote: current_page?('/search'),
+    class: "form-inline" }) do |f| %>
     <div class="form-group">
       <%= label_tag :search_terms, "Find recipes", class: "sr-only" %>
       <%= search_field_tag :search_terms, params[:search_terms],
