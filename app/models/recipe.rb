@@ -55,7 +55,7 @@ class Recipe < ActiveRecord::Base
     def self.search_titles_and_tags_for(string)
       string = searchify string
       includes(:tags).where(
-        ['lower(title) LIKE ? OR lower(tags.name) LIKE ?', "%#{string}%", "%#{string}%"]
+        ['lower(title) LIKE ? OR lower(tags.name) LIKE ?', "#{string}%", "#{string}%"]
       ).references(:tags).order('stars_count desc')
     end
 

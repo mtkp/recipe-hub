@@ -8,6 +8,6 @@ class AddForksCountToRecipe < ActiveRecord::Migration
   end
 
   def down
-    remove_colum :recipes, :forks_count
+    remove_column :recipes, :forks_count
   end
 end
