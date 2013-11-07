@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   VALID_USERNAME_REGEX = /\A[\w]*[a-z]+[\w]*\z/i
   RESERVED_WORDS = %w{ user username recipe ingredient direction fork star
                        devise sign_in sign_out sign_up admin tag tagging
-                       search }.
+                       search page admin index }.
                        flat_map { |word| [word, "#{word}s"] }
   validates :username, presence: true
   validates :username, length: { minimum: 3, maximum: 20 },

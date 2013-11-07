@@ -25,7 +25,8 @@ class UserTest < ActiveSupport::TestCase
 
     reserved_path_words = [ "user", "username", "recipe", "ingredient",
                            "direction", "fork", "star", "devise", "sign_in",
-                           "sign_out", "sign_up", "tag", "tagging", "search" ]
+                           "sign_out", "sign_up", "tag", "tagging", "search",
+                           "page", "admin", "index" ]
 
     ok_usernames.each do |name|
       assert new_user(name).valid?, "#{name} should be valid"
