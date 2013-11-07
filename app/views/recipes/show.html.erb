@@ -17,14 +17,6 @@
           <%= link_to @recipe.source_recipe_user.username, @recipe.source_recipe_user %>
         </div>
       <% end %>
-      <div id="variation">
-        <% if nil #stub %>
-          <%= link_to "Variations", '#' %>
-        <% end %>
-        <% if @author == current_user %>
-          <%= link_to "Make a variation", '#' %>
-        <% end %>
-      </div>
     </div>
 
     <div class="col-xs-12 col-md-3">
