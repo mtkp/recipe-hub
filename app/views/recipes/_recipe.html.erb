@@ -1,2 +1,4 @@
-<%= link_to truncate(recipe.title, length: 80), recipe %>
-<small>updated <%= time_ago_in_words recipe.updated_at %> ago</small>
+<% cache(recipe) do %>
+  <%= link_to truncate(recipe.title, length: 80), recipe %>
+  <small><%= truncate(recipe.notes, length: 120) %></small>
+<% end %>

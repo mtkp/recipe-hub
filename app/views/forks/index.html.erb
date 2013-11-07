@@ -1,2 +1,4 @@
-<h3>Recipes forked from <%= link_to @recipe.title, @recipe %></h3>
-<%= render 'shared/list', items: @recipe.forked_recipes %>
+<% cache(cache_key_for_forks_of @recipe) do %>
+  <h3>Recipes forked from <%= link_to @recipe.title, @recipe %></h3>
+  <%= render 'shared/list', items: @recipe.forked_recipes %>
+<% end %>

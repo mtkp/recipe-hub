@@ -1,4 +1,6 @@
-<div class="user-partial">
-  <%= gravatar_for(user, size: 48) %>
-  <%= link_to user.username, user %>
-</div>
+<% cache(user) do %>
+  <div class="user-partial">
+    <%= gravatar_for(user, size: 48) %>
+    <%= link_to user.username, user %>
+  </div>
+<% end %>

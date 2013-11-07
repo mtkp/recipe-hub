@@ -24,7 +24,9 @@
       </div>
       <div class="panel-body">
         <% if @recent_recipes.any? %>
-          <%= render 'shared/list', items: @recent_recipes %>
+          <% cache(cache_key_for_user_recipe_list(@user)) do %>
+            <%= render 'shared/list', items: @recent_recipes %>
+          <% end %>
         <% else %>
           <em>No recipes yet...</em>
         <% end %>

@@ -1,5 +1,5 @@
 <strong>
-  <%= link_to pluralize(recipe.stars_count, "star"), recipe_stars_path(recipe) %>
+  <%= link_to pluralize(recipe.reload.stars_count, "star"), recipe_stars_path(recipe) %>
 </strong>
 <div>
   <% if current_user.has_starred?(recipe) %>
