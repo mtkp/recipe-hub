@@ -11,12 +11,6 @@ class Tag < ActiveRecord::Base
     name
   end
 
-  # def self.search(string)
-  #   if string && !string.empty?
-  #     where(['lower(name) LIKE ?', "%#{string}%".downcase]).order(:updated_at)
-  #   end
-  # end
-
   private
     def remove_whitespace_and_uppercase
       return if name.nil?

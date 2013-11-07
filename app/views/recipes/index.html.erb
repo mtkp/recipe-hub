@@ -15,7 +15,7 @@
         <% @recipes.each do |recipe| %>
           <tr>
             <td><%= link_to truncate(recipe.title, length: 80), recipe %></td>
-            <td><%= truncate(recipe.notes, length: 80) %></td>
+            <td><%= truncate(recipe.notes, length: 120) %></td>
             <% if @user == current_user %>
               <td><small>
                 <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>

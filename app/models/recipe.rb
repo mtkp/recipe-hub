@@ -34,6 +34,10 @@ class Recipe < ActiveRecord::Base
 
   def self.duplicate!(recipe, change_params = {})
     recipe_dup = nil
+
+    # ensure the counters are reset
+    change_params.merge!({ forks_count: 0, stars_count: 0 })
+    
     transaction do
       # dup the recipe
       recipe_dup = recipe.create_dup! change_params

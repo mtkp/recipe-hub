@@ -3,8 +3,10 @@
 </strong>
 <div>
   <% if current_user.has_starred?(recipe) %>
-    <%= link_to "Unstar", recipe_stars_path(recipe), method: :delete, class: "btn btn-dark btn-sm", remote: true %>
+    <%= link_to "Unstar", recipe_stars_path(recipe), method: :delete,
+        class: "btn btn-dark btn-sm", remote: true %>
   <% else %>
-    <%= link_to "Star recipe", recipe_stars_path(recipe), method: :post, class: "btn btn-warning btn-sm", remote: true %>
+    <%= link_to "Star recipe", recipe_stars_path(recipe), method: :post,
+        class: "btn btn-warning btn-sm", remote: true %>
   <% end %>
 </div>
