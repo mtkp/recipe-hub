@@ -21,4 +21,4 @@ Users of Recipe hub can...
 
 ### About
 Created by Matt Kipps.  
-Originally concept was a git/GitHub for recipes (hence the name and many design influences).
+Originally concept was a git/GitHub for recipes (hence the name and design influence).
