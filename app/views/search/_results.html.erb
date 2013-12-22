@@ -1,6 +1,5 @@
 <% unless params[:search_terms].empty? %>
-  Found <%= pluralize(@found_items.count, "match") %> for
-  <%= params[:search_terms] %>
-  <br /><br />
+  <div id="snapshot">Found <%= pluralize(@found_items.count, "match") %> for
+  "<%= params[:search_terms] %>"</div>
   <%= render('shared/list', items: @found_items) if @found_items %>
 <% end %>

@@ -1,4 +1,15 @@
 <% cache(recipe) do %>
   <%= link_to truncate(recipe.title, length: 80), recipe %>
-  <small><%= truncate(recipe.notes, length: 120) %></small>
+  <div class="description">
+    <% if recipe.notes %>
+      <%= truncate(recipe.notes, length: 120) %>
+    <% else %>
+      <em>No description</em>
+    <% end %>
+  </div>
+  <div class="stats">
+    <%= link_to pluralize(recipe.forks_count, "fork"), recipe_forks_path(recipe) %>
+    |
+    <%= link_to pluralize(recipe.reload.stars_count, "star"), recipe_stars_path(recipe) %>
+  </div>
 <% end %>
