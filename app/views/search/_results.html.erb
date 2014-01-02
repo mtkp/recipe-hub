@@ -1,5 +1,6 @@
-<% unless params[:search_terms].empty? %>
+<% unless params[:search_terms].nil? or params[:search_terms].empty? %>
   <div id="snapshot">Found <%= pluralize(@found_items.count, "match") %> for
   "<%= params[:search_terms] %>"</div>
   <%= render('shared/list', items: @found_items) if @found_items %>
+  <%= will_paginate @found_items, renderer: BootstrapPagination::Rails %>
 <% end %>

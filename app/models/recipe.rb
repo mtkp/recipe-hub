@@ -24,11 +24,14 @@ class Recipe < ActiveRecord::Base
   # validations
   validates :title, :user_id, presence: true
 
+  #pagination
+  self.per_page = 10
+
   def self.search(string)
-    if string.nil? || string.empty?
-      none
+    if string.nil? or string.empty?
+      none # return rails' "none" for empty search results (instead of nil)
     else
-      search_titles_and_tags_for string
+      search_recipes_and_associations_for string
     end
   end
 
@@ -40,7 +43,7 @@ class Recipe < ActiveRecord::Base
     
     transaction do
       # dup the recipe
-      recipe_dup = recipe.create_dup! change_params
+      recipe_dup = recipe.create_dup!(change_params)
 
       # dup the associated ingredients and directions
       dup_for_recipe_dup = ->i { i.create_dup!(recipe_id: recipe_dup.id) }
@@ -52,18 +55,36 @@ class Recipe < ActiveRecord::Base
 
   private
     def self.searchify(string)
-      return unless string
-      string.downcase
+      string.downcase.strip if string
     end
 
     def self.search_titles_and_tags_for(string)
-      string = searchify string
-      includes(:tags).where(
-        ['lower(title) LIKE ? OR lower(tags.name) LIKE ?', "%#{string}%", "%#{string}%"]
-      ).references(:tags).order('stars_count desc')
+      searchify! string
+      includes(:tags)
+        .where(['lower(title) LIKE ? OR lower(tags.name) LIKE ?',
+                "%#{string}%", "%#{string}%"])
+        .references(:tags).order('stars_count desc')
     end
 
-    def self.search_tags(string)
+    def self.search_recipes_and_associations_for(string)
+      s_str = searchify string
+
+      # join ingredients, directions, tags to the recipe
+      # search where the content of the recipe is like the string
+      joins("LEFT JOIN ingredients ON ingredients.recipe_id = recipes.id
+             LEFT JOIN directions ON directions.recipe_id = recipes.id
+             LEFT JOIN taggings ON taggings.recipe_id = recipes.id
+             LEFT JOIN tags on taggings.tag_id = tags.id")
+        .where(['   lower(title)     LIKE ?
+                 OR lower(notes)     LIKE ?
+                 OR lower(body)      LIKE ?
+                 OR lower(food)      LIKE ?
+                 OR lower(tags.name) LIKE ?',
+                "%#{s_str}%", "%#{s_str}%", "%#{s_str}%", "%#{s_str}%", "%#{s_str}%"])
+        .distinct
+        .order('stars_count desc')
     end
 
 end
+
+

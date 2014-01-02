@@ -29,6 +29,7 @@ $btn-success-bg: $navbar-default-bg;
 $btn-success-border: darken(adjust_hue($btn-success-bg, -10), 5%);
 $link-color: lighten($navbar-default-bg, 5%);
 $nav-pills-active-link-hover-bg: $navbar-default-bg;
+$pagination-active-bg: $navbar-default-bg;
 
  // import original bootstrap
 @import "twitter/bootstrap";
