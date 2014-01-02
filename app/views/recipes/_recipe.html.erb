@@ -1,10 +1,10 @@
 <% cache(recipe) do %>
   <%= link_to truncate(recipe.title, length: 80), recipe %>
   <div class="description">
-    <% if recipe.notes %>
-      <%= truncate(recipe.notes, length: 120) %>
-    <% else %>
+    <% if recipe.notes.nil? or recipe.notes.empty? %>
       <em>No description</em>
+    <% else %>
+      <%= truncate(recipe.notes, length: 120) %>
     <% end %>
   </div>
   <div class="stats">

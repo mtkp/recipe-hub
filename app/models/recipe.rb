@@ -25,10 +25,10 @@ class Recipe < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   def self.search(string)
-    if string.nil? || string.empty?
+    if string.nil? or string.empty?
       none # return rails' "none" for empty search results (instead of nil)
     else
-      search_directions_and_ingredients_for string
+      search_recipes_and_associations_for string
     end
   end
 
@@ -51,8 +51,8 @@ class Recipe < ActiveRecord::Base
   end
 
   private
-    def self.searchify!(string)
-      string.downcase! if string
+    def self.searchify(string)
+      string.downcase.strip if string
     end
 
     def self.search_titles_and_tags_for(string)
@@ -63,14 +63,21 @@ class Recipe < ActiveRecord::Base
         .references(:tags).order('stars_count desc')
     end
 
-    def self.search_directions_and_ingredients_for(string)
-      searchify! string
+    def self.search_recipes_and_associations_for(string)
+      s_str = searchify string
 
-      # join ingredients and directions to recipe and search
-      includes(:ingredients, :directions)
-        .where(['lower(body) LIKE ? OR lower(food) LIKE ?',
-                "%#{string}%", "%#{string}%"])
-        .references(:ingredients, :directions)
+      # join ingredients, directions, tags to the recipe, and search
+      joins("LEFT JOIN ingredients ON ingredients.recipe_id = recipes.id
+             LEFT JOIN directions ON directions.recipe_id = recipes.id
+             LEFT JOIN taggings ON taggings.recipe_id = recipes.id
+             LEFT JOIN tags on taggings.tag_id = tags.id")
+        .where(['   lower(title)     LIKE ?
+                 OR lower(notes)     LIKE ?
+                 OR lower(body)      LIKE ?
+                 OR lower(food)      LIKE ?
+                 OR lower(tags.name) LIKE ?',
+                "%#{s_str}%", "%#{s_str}%", "%#{s_str}%", "%#{s_str}%", "%#{s_str}%"])
+        .distinct
         .order('stars_count desc')
     end
 
