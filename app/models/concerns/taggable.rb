@@ -1,3 +1,4 @@
+# Tagging concept from RailsCasts
 module Taggable
   extend ActiveSupport::Concern
 

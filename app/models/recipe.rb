@@ -26,9 +26,9 @@ class Recipe < ActiveRecord::Base
 
   def self.search(string)
     if string.nil? || string.empty?
-      none
+      none # return rails' "none" for empty search results (instead of nil)
     else
-      search_titles_and_tags_for string
+      search_directions_and_ingredients_for string
     end
   end
 
@@ -40,7 +40,7 @@ class Recipe < ActiveRecord::Base
     
     transaction do
       # dup the recipe
-      recipe_dup = recipe.create_dup! change_params
+      recipe_dup = recipe.create_dup!(change_params)
 
       # dup the associated ingredients and directions
       dup_for_recipe_dup = ->i { i.create_dup!(recipe_id: recipe_dup.id) }
@@ -51,19 +51,29 @@ class Recipe < ActiveRecord::Base
   end
 
   private
-    def self.searchify(string)
-      return unless string
-      string.downcase
+    def self.searchify!(string)
+      string.downcase! if string
     end
 
     def self.search_titles_and_tags_for(string)
-      string = searchify string
-      includes(:tags).where(
-        ['lower(title) LIKE ? OR lower(tags.name) LIKE ?', "%#{string}%", "%#{string}%"]
-      ).references(:tags).order('stars_count desc')
+      searchify! string
+      includes(:tags)
+        .where(['lower(title) LIKE ? OR lower(tags.name) LIKE ?',
+                "%#{string}%", "%#{string}%"])
+        .references(:tags).order('stars_count desc')
     end
 
-    def self.search_tags(string)
+    def self.search_directions_and_ingredients_for(string)
+      searchify! string
+
+      # join ingredients and directions to recipe and search
+      includes(:ingredients, :directions)
+        .where(['lower(body) LIKE ? OR lower(food) LIKE ?',
+                "%#{string}%", "%#{string}%"])
+        .references(:ingredients, :directions)
+        .order('stars_count desc')
     end
 
 end
+
+
