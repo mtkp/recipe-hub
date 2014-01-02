@@ -24,6 +24,9 @@ class Recipe < ActiveRecord::Base
   # validations
   validates :title, :user_id, presence: true
 
+  #pagination
+  self.per_page = 10
+
   def self.search(string)
     if string.nil? or string.empty?
       none # return rails' "none" for empty search results (instead of nil)
@@ -66,7 +69,8 @@ class Recipe < ActiveRecord::Base
     def self.search_recipes_and_associations_for(string)
       s_str = searchify string
 
-      # join ingredients, directions, tags to the recipe, and search
+      # join ingredients, directions, tags to the recipe
+      # search where the content of the recipe is like the string
       joins("LEFT JOIN ingredients ON ingredients.recipe_id = recipes.id
              LEFT JOIN directions ON directions.recipe_id = recipes.id
              LEFT JOIN taggings ON taggings.recipe_id = recipes.id

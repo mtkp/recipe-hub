@@ -24,6 +24,10 @@ gem 'devise'
 # Use Bootstrap 3 for visual styling
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
 
+# Use will_paginate for object pagination
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
